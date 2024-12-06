@@ -1,0 +1,204 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-22197.htm" />
+    <meta charset="utf-8">
+    <title>C ++程序进行Fermat原始性测试</title>
+        <meta name="description" content="Fermat Primality测试执行以检查给定数字是否为质数。这是此算法的C ++代码。 算法 Begin &nbsp;&nbsp;&nbsp;modulo(base,&nbsp;e,&nbsp;" />
+        <link rel="icon" href="__ADDON__/img/netchnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                        <a class="navbar-brand" href="/">
+                                Netch Node
+                            </a>
+                                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(__ADDON__/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">C ++程序进行Fermat原始性测试</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<p>Fermat Primality测试执行以检查给定数字是否为质数。这是此算法的C ++代码。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;modulo(base,&nbsp;e,&nbsp;mod) &nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;1 &nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;base &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;mod&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;(a&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;(b&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;%&nbsp;mod End  Begin &nbsp;&nbsp;&nbsp;Fermat(ll&nbsp;m,&nbsp;int&nbsp;iterations) &nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;done &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iterations;&nbsp;i++) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;rand()&nbsp;mod&nbsp;(m&nbsp;-&nbsp;1)&nbsp;+&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(modulo(x,&nbsp;m&nbsp;-&nbsp;1,&nbsp;m)&nbsp;!=&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done &nbsp;&nbsp;&nbsp;return&nbsp;true End</pre> <h2>范例程式码</h2> <pre>#include&nbsp;&lt;cstring&gt; #include&nbsp;&lt;iostream&gt; #include&nbsp;&lt;cstdlib&gt; #define&nbsp;ll&nbsp;long&nbsp;long using&nbsp;namespace&nbsp;std; ll&nbsp;modulo(ll&nbsp;base,&nbsp;ll&nbsp;e,&nbsp;ll&nbsp;mod)&nbsp;{ &nbsp;&nbsp;&nbsp;ll&nbsp;a&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;ll&nbsp;b&nbsp;=&nbsp;base; &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;%&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;(a&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;(b&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;%&nbsp;mod; } bool&nbsp;Fermat(ll&nbsp;m,&nbsp;int&nbsp;iterations)&nbsp;{ &nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;==&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iterations;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;rand()&nbsp;%&nbsp;(m&nbsp;-&nbsp;1)&nbsp;+&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(modulo(x,&nbsp;m&nbsp;-&nbsp;1,&nbsp;m)&nbsp;!=&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;true; } int&nbsp;main()&nbsp;{ &nbsp;&nbsp;&nbsp;int&nbsp;iteration&nbsp;=&nbsp;70; &nbsp;&nbsp;&nbsp;ll&nbsp;num; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;num; &nbsp;&nbsp;&nbsp;if&nbsp;(Fermat(num,&nbsp;iteration)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;else &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;not&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;return&nbsp;0; }</pre> <p>输出结果</p> <pre>Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;13&nbsp;is&nbsp;prime</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-21699.htm">动物防疫站在哪里办公的（动物防疫站是什么编制）</a></p>
+                                        <p>下一个：<a href="/news/article-22200.htm">海拉鲁完整地图（海拉鲁图册）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-node-share.htm" title="「8月21日」最高速度20.7M/S，2024年Netch每天更新免费节点订阅链接">「8月21日」最高速度20.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-free-node-subscribe-links.htm" title="「9月9日」最高速度20.3M/S，2024年Netch每天更新免费节点订阅链接">「9月9日」最高速度20.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-27-free-clash-subscribe.htm" title="「8月27日」最高速度22.6M/S，2024年Netch每天更新免费节点订阅链接">「8月27日」最高速度22.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-free-subscribe-node.htm" title="「10月24日」最高速度21.2M/S，2024年Netch每天更新免费节点订阅链接">「10月24日」最高速度21.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-clash.htm" title="「11月6日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接">「11月6日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-6-free-subscribe-node.htm" title="「8月6日」最高速度21.5M/S，2024年Netch每天更新免费节点订阅链接">「8月6日」最高速度21.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-share-netch-node.htm" title="「11月9日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接">「11月9日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-6-free-subscribe-node.htm" title="「9月6日」最高速度19.8M/S，2024年Netch每天更新免费节点订阅链接">「9月6日」最高速度19.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-netch.htm" title="「10月22日」最高速度21.4M/S，2024年Netch每天更新免费节点订阅链接">「10月22日」最高速度21.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22197.htm" title="C ++程序进行Fermat原始性测试">C ++程序进行Fermat原始性测试</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(__ADDON__/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img href="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
