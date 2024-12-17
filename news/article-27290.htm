@@ -2,11 +2,10 @@
 <html class="no-js" lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://netchnode.github.io" />
+        <link rel="canonical" href="https://netchnode.github.io/news/article-27290.htm" />
     <meta charset="utf-8">
-    <title>2024-10归档 - NetchNode节点订阅站</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+    <title>mysql in变量值的处理方案</title>
+        <meta name="description" content="Mysql数据库中，在一个范围存查询数据时候，有时候我们会用到in 例如： SELECT contract_code FROM ContractInfo  WHERE contract_code IN" />
         <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
@@ -30,7 +29,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
     <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -96,9 +95,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <h1 class="page-title">2024-10 归档</h1>
+                            <h1 class="page-title">mysql in变量值的处理方案</h1>
                             <p class="nav">
-                                <a href="/">首页</a> / <span>2024-10 归档</span>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                             </p>
                         </div>
                     </div>
@@ -110,34 +109,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row mb-50 item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <div class="about-image">
-                                    <a href="/free-nodes/2024-10-1-free-clash.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240712/0f8c7ff642d5896baba6d7cc66af552d.webp" alt="「10月1日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接">
-                                    </a>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <p style="margin-left:.0001pt;text-align:justify;">Mysql数据库中，在一个范围存查询数据时候，有时候我们会用到in</p> <p style="margin-left:.0001pt;text-align:justify;">例如：</p> <pre><code class="language-sql">SELECT contract_code FROM ContractInfo  WHERE contract_code IN ('ht123456','ht654321');</code></pre> <p>很显然，这个查询没有任何问题，可以正确执行。</p> <p>那么，如果将'ht123456','ht654321'作为变量传递给mysql，mysql是否还能执行呢？</p> <pre><code class="language-sql">SET @nu = "'ht123456','ht654321'"; select contract_code from ContractInfo  WHERE contract_code IN (@nu);</code></pre> <p>经验证，查询不到任何结果！why？</p> <p>直接上代码</p> <pre><code class="language-sql">SET @nu = "'ht123456','ht654321'"; EXPLAIN  select contract_code from ContractInfo  WHERE contract_code IN (@nu); SHOW WARNINGS;</code></pre> <p style="margin-left:.0001pt;text-align:justify;">可以看到，mysql优化器并没有想预期的那样，将'ht123456','ht654321'作为变量传递@nu。</p> <p style="margin-left:.0001pt;text-align:justify;"><strong><span style="color:#fe2c24;">原因：mysql认为，set设置的变量是一个字符串，并不是一个集合，而in后面应该跟随一个集合，所有返回为0，在某些版本的mysql中，会将where后面直接解析为0，即：where 0，查询并没有成功;</span></strong></p> <p style="margin-left:.0001pt;text-align:justify;">如何解决这个问题？</p> <p style="margin-left:.0001pt;text-align:justify;"><strong>方案一：采用预处理方式</strong></p> <pre><code class="language-sql">SET @nu = "'ht123456','ht654321'"; set @sql = CONCAT("SELECT contract_code FROM ContractInfo WHERE contract_code IN (",@nu,");"); prepare exesql from @sql;   execute exesql; deallocate prepare exesql;</code></pre> <p style="margin-left:.0001pt;text-align:justify;">其中：</p> <p style="margin-left:.0001pt;text-align:justify;">prepare是定义预处理语句；execute为执行预处理语句；deallocate释放定义。</p> <p style="margin-left:.0001pt;text-align:justify;"><strong>方案二：mysql函数</strong></p> <p style="margin-left:.0001pt;text-align:justify;">1、FIND_IN_SET：返回字符串在以逗号分隔的原始字符串中首次出现的位置。</p> <pre><code class="language-sql">SET @nu = "ht123456,ht654321"; SELECT contract_code FROM ContractInfo WHERE FIND_IN_SET (contract_code ,@nu)&gt; 0;</code></pre> <p>2、POSITION：返回字符串在原始字符串中首次出现的位置。</p> <pre><code class="language-sql">SET @nu = "ht123456,ht654321"; SELECT contract_code FROM ContractInfo WHERE POSITION(contract_code in @nu)&gt; 0;</code></pre> <p>3、INSTR：将字符串str从第x位置开始，y个字符长的字符串替换为字符串instr。</p> <pre><code class="language-sql">SET @nu = "ht123456,ht654321"; SELECT contract_code FROM ContractInfo WHERE INSTR(@nu,contract_code )&gt;0;</code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-26830.htm">合肥宠物领养中心电话号码（合肥市宠物领养中心）</a></p>
+                                        <p>下一个：<a href="/news/article-27291.htm">猫咪驱虫大概多少钱一次（猫咪驱虫多少钱?）</a></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                                    <a href="/free-nodes/2024-10-1-free-clash.htm" class="xcblog-blog-url">
-                                        <h3 class="title xcblog-blog-title">
-                                            「10月1日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接                                        </h3>
-                                    </a>
-                                    <ul class="about-line">
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                    <p class="text">这一次的节点更新覆盖了美国、欧洲、加拿大、韩国、日本、香港、新加坡等地区,最高速度可达21.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                        </div>
-                                            </div>
-
-                    <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -145,16 +122,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-27-free-clash-subscribe.htm" title="「8月27日」最高速度22.6M/S，2024年Netch每天更新免费节点订阅链接">「8月27日」最高速度22.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-29-linux-netch-node.htm" title="「7月29日」最高速度22M/S，2024年Netch每天更新免费节点订阅链接">「7月29日」最高速度22M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-linux-netch-node.htm" title="「12月7日」最高速度22.5M/S，2024年Netch每天更新免费节点订阅链接">「12月7日」最高速度22.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-26-netch-node.htm" title="「8月26日」最高速度22M/S，2024年Netch每天更新免费节点订阅链接">「8月26日」最高速度22M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-25-free-netch-node.htm" title="「8月25日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接">「8月25日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-24026.htm" title="python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）">python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-high-speed-nodes.htm" title="「11月30日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接">「11月30日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-node-share-links.htm" title="「10月12日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接">「10月12日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-clash.htm" title="「11月23日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接">「11月23日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-node-subscribe.htm" title="「11月26日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接">「11月26日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-26-free-node-subscribe.htm" title="「7月26日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接">「7月26日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21699.htm" title="动物防疫站在哪里办公的（动物防疫站是什么编制）">动物防疫站在哪里办公的（动物防疫站是什么编制）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-15-free-ssr-subscribe.htm" title="「7月15日」最高速度22.2M/S，2024年Netch每天更新免费节点订阅链接">「7月15日」最高速度22.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-free-node-subscribe-links.htm" title="「8月20日」最高速度23M/S，2024年Netch每天更新免费节点订阅链接">「8月20日」最高速度23M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-5-netch-node.htm" title="「8月5日」最高速度19.8M/S，2024年Netch每天更新免费节点订阅链接">「8月5日」最高速度19.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20360.htm" title="mysql limit和offset用法_在线工具">mysql limit和offset用法_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-netch-node.htm" title="「10月11日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接">「10月11日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-28-netch-node.htm" title="「7月28日」最高速度19M/S，2024年Netch每天更新免费节点订阅链接">「7月28日」最高速度19M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-2-free-node-subscribe-links.htm" title="「9月2日」最高速度21.5M/S，2024年Netch每天更新免费节点订阅链接">「9月2日」最高速度21.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-free-node-subscribe.htm" title="「9月8日」最高速度21.5M/S，2024年Netch每天更新免费节点订阅链接">「9月8日」最高速度21.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
