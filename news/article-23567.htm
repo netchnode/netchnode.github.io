@@ -109,7 +109,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1、需要的库</a></li> <li><a href="#_label1" rel="nofollow">2、获取一个 host 地址</a></li> <li><a href="#_label2" rel="nofollow">3、循环所有的端口</a></li> <li><a href="#_label3" rel="nofollow">4、完整脚本</a></li> </ul> </div> <p>端口扫描是非常实用的，不止用在信息安全方面，日常的运维也用得到。这方面的工具也不要太多，搞过 CTF 的朋友会告诉你有多少端口扫描工具，那为什么还要用 Python 再自己实现一遍？这个问题就像饭店里的菜已经很好吃了，为什么还要自己烧菜一样，主要还是为了适合自己的口味，添加自己需要的个性功能。</p> <p>今天我们将用 20 行代码编写一个简单的端口扫描器。让我们开始吧！</p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1、需要的库</h2> <p>都是标准库，因此内网环境也不影响：</p> <div class="ay1code"> <pre class="brush:py;">import socket  import argparse  import sys  import time  </pre> </div> <p>套接字库是一个低级网络接口库，它允许我们在脚本中创建网络连接。argparse 库用于解释传递给我们脚本的参数。sys 库允许我们与系统交互。最后，time 库用来统计耗时。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2、获取一个 host 地址</h2> <div class="ay1code"> <pre class="brush:py;">parser = argparse.ArgumentParser()  parser.add_argument('host')  args = parser.parse_args()  </pre> </div> <p>这样脚本在运行的时候，第一个参数就可以传入一个主机名或 ip 地址，下文就可以通过 args.host 来使用。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3、循环所有的端口</h2> <p>端口占用 2 个字节，因此其范围是 1-65535</p> <div class="ay1code"> <pre class="brush:py;">start = time.time()  try:      for port in range(1, 65536):          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)          sock.settimeout(1)          result = sock.connect_ex((args.host, port))          if result == 0:              print("Port: {} Open".format(port))          sock.close()  except KeyboardInterrupt:      sys.exit()  end = time.time()  </pre> </div> <p>如果 sock.connect_ex 返回了 0 说明端口开放，为了让程序正常退出，我们加上 try except 来捕获键盘发起的中断。</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4、完整脚本</h2> <p>一旦 for 循环完成并扫描了所有端口，我们将获取时间并打印出脚本运行的时间：</p> <div class="ay1code"> <pre class="brush:py;">import socket  import argparse  import sys  import time    parser = argparse.ArgumentParser()  parser.add_argument('host')  args = parser.parse_args()  start = time.time()    try:      for port in range(1, 65536):          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)          sock.settimeout(1)          result = sock.connect_ex((args.host, port))          if result == 0:              print("Port: {} Open".format(port))          sock.close()  except KeyboardInterrupt:      sys.exit()    end = time.time()  print(f"Scanning completed in: {end-start:.3f}s")  </pre> </div> <p>除去空行，代码一共 20 行，运行效果如下：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/4fafc1d22f739c785b84c8ddcf0e3447.jpg"></p> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1、需要的库</a></li> <li><a href="#_label1" rel="nofollow">2、获取一个 host 地址</a></li> <li><a href="#_label2" rel="nofollow">3、循环所有的端口</a></li> <li><a href="#_label3" rel="nofollow">4、完整脚本</a></li> </ul> </div> <p>端口扫描是非常实用的，不止用在信息安全方面，日常的运维也用得到。这方面的工具也不要太多，搞过 CTF 的朋友会告诉你有多少端口扫描工具，那为什么还要用 Python 再自己实现一遍？这个问题就像饭店里的菜已经很好吃了，为什么还要自己烧菜一样，主要还是为了适合自己的口味，添加自己需要的个性功能。</p> <p>今天我们将用 20 行代码编写一个简单的端口扫描器。让我们开始吧！</p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1、需要的库</h2> <p>都是标准库，因此内网环境也不影响：</p> <div class="ay1code"> <pre class="brush:py;">import socket  import argparse  import sys  import time  </pre> </div> <p>套接字库是一个低级网络接口库，它允许我们在脚本中创建网络连接。argparse 库用于解释传递给我们脚本的参数。sys 库允许我们与系统交互。最后，time 库用来统计耗时。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2、获取一个 host 地址</h2> <div class="ay1code"> <pre class="brush:py;">parser = argparse.ArgumentParser()  parser.add_argument('host')  args = parser.parse_args()  </pre> </div> <p>这样脚本在运行的时候，第一个参数就可以传入一个主机名或 ip 地址，下文就可以通过 args.host 来使用。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3、循环所有的端口</h2> <p>端口占用 2 个字节，因此其范围是 1-65535</p> <div class="ay1code"> <pre class="brush:py;">start = time.time()  try:      for port in range(1, 65536):          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)          sock.settimeout(1)          result = sock.connect_ex((args.host, port))          if result == 0:              print("Port: {} Open".format(port))          sock.close()  except KeyboardInterrupt:      sys.exit()  end = time.time()  </pre> </div> <p>如果 sock.connect_ex 返回了 0 说明端口开放，为了让程序正常退出，我们加上 try except 来捕获键盘发起的中断。</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4、完整脚本</h2> <p>一旦 for 循环完成并扫描了所有端口，我们将获取时间并打印出脚本运行的时间：</p> <div class="ay1code"> <pre class="brush:py;">import socket  import argparse  import sys  import time    parser = argparse.ArgumentParser()  parser.add_argument('host')  args = parser.parse_args()  start = time.time()    try:      for port in range(1, 65536):          sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)          sock.settimeout(1)          result = sock.connect_ex((args.host, port))          if result == 0:              print("Port: {} Open".format(port))          sock.close()  except KeyboardInterrupt:      sys.exit()    end = time.time()  print(f"Scanning completed in: {end-start:.3f}s")  </pre> </div> <p>除去空行，代码一共 20 行，运行效果如下：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/4fafc1d22f739c785b84c8ddcf0e3447.jpg"></p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-23112.htm">瑞鹏宠物医院好不好（瑞鹏宠物医院大众点评）</a></p>
                                         <p>下一个：<a href="/news/article-23568.htm">犬猫专科医院（猫狗动物医院）</a></p>
@@ -122,16 +123,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-node-subscribe-links.htm" title="「12月4日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接">「12月4日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-18-free-clash.htm" title="「8月18日」最高速度18.6M/S，2024年Netch每天更新免费节点订阅链接">「8月18日」最高速度18.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23568.htm" title="犬猫专科医院（猫狗动物医院）">犬猫专科医院（猫狗动物医院）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-12-free-netch.htm" title="「9月12日」最高速度20.5M/S，2024年Netch每天更新免费节点订阅链接">「9月12日」最高速度20.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-node-share.htm" title="「8月15日」最高速度22.7M/S，2024年Netch每天更新免费节点订阅链接">「8月15日」最高速度22.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-netch-node.htm" title="「10月8日」最高速度21.3M/S，2024年Netch每天更新免费节点订阅链接">「10月8日」最高速度21.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-netch-node.htm" title="「11月13日」最高速度20.1M/S，2024年Netch每天更新免费节点订阅链接">「11月13日」最高速度20.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-9-free-subscribe-node.htm" title="「10月9日」最高速度22.1M/S，2024年Netch每天更新免费节点订阅链接">「10月9日」最高速度22.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-3-node-share.htm" title="「8月3日」最高速度19.5M/S，2024年Netch每天更新免费节点订阅链接">「8月3日」最高速度19.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-17-free-v2ray.htm" title="「7月17日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接">「7月17日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-3-free-subscribe-node.htm" title="「9月3日」最高速度22.8M/S，2024年Netch每天更新免费节点订阅链接">「9月3日」最高速度22.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-share-netch-node.htm" title="「12月14日」最高速度20.5M/S，2024年Netch每天更新免费节点订阅链接">「12月14日」最高速度20.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-clash-subscribe.htm" title="「12月12日」最高速度19.9M/S，2024年Netch每天更新免费节点订阅链接">「12月12日」最高速度19.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-10-netch-node.htm" title="「9月10日」最高速度18M/S，2024年Netch每天更新免费节点订阅链接">「9月10日」最高速度18M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-20-node-share.htm" title="「7月20日」最高速度22.2M/S，2024年Netch每天更新免费节点订阅链接">「7月20日」最高速度22.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-28-netch-node.htm" title="「7月28日」最高速度19M/S，2024年Netch每天更新免费节点订阅链接">「7月28日」最高速度19M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share-links.htm" title="「12月2日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接">「12月2日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share.htm" title="「10月15日」最高速度21.9M/S，2024年Netch每天更新免费节点订阅链接">「10月15日」最高速度21.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-subscribe-node.htm" title="「9月16日」最高速度22.4M/S，2024年Netch每天更新免费节点订阅链接">「9月16日」最高速度22.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-share-netch-node.htm" title="「10月21日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接">「10月21日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -143,7 +144,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -174,6 +175,15 @@
         </div>
         <div class="container">
             <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                 <p class="text">
                     <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
                 </p>

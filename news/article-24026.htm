@@ -109,7 +109,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>1.变量可以指向函数 2.函数名其实就是指向函数的变量 3.高阶函数：能接收函数做参数的函数 4.函数的参数可以接收变量 5.一个函数可以接收另一个函数作为参数 python函数 1.系统库提供的内部函数 2.第三方提供的函数 3.自定义函数 1.系统库函数 字符函数库()，数字函数库()，网络编程库(urllib2) &gt;&gt;&gt;help(str) 字符串帮助可获得系统中的字符串函数们（同理其他函数） &gt;&gt;&gt;help(str.islower) s.islower() //判断字符串s是否为小写 s.replace(old,new,count) import math #数学库 &gt;&gt;&gt;value=math.sin(3.14/6) &gt;&gt;&gt;math.pi #为派 &gt;&gt;&gt;val = math.sin(math.pi/6) &gt;&gt;&gt;print val 0.5 &gt;&gt;&gt;help(math) #查看math库 &gt;&gt;&gt;math.pow(3,4) # 3的4次方 或者 &gt;&gt;&gt;3**4 #也是代表 3的4次方 这两种方法一个是调用math库，另一个是调用本身的定义 import os &gt;&gt;&gt;os.getcwd() #获得当前的工作路径 &gt;&gt;&gt;help(os.getcwd) os.listdir() #列出指定路径下面的文件 网络函数库 &gt;&gt;&gt;import socket &gt;&gt;&gt;baiduip = socket.gethostbyname('www.baidu.com') //获得ip &gt;&gt;&gt;print baiduip 函数返回多个值 可以 return a,b,c,d &gt;&gt;&gt;sum1,multi,plus,pow = functionaaa(2,10) #函数一起返回，变量一起接收 ，返回的是一个 tuple 元祖 函数可设定默认值但默认值一定写在形参的右侧 函数 有 必选参数，默认参数，可变参数，关键字参数等 当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数 定义默认参数要牢记一点：默认参数必须指向不变对象！ 可变参数：就是传人的参数个数是可变的，可以是0个，1个，或者任意个。 例如 算一组数字的平方和，根本不知道有几个数字，可以考虑将其放置一个list或者tuple传进来。 def calc(numbers): sum=0 for n in numbers: sum = sum + n*n return sum 如果利用可变参数，调用函数就可以简单了，把函数参数改成可变参数： def calc(*numbers): sum = 0 for n in numbers: sum = sum + n*n return sum def(1,2,3,4,5) #而不需要list和tuple啦 定义可变参数和定义list和tuple参数相比，仅仅在参数前面加了一个*号，看着像C/C++指针一样，但在函数内部，参数numbers接收到的是一个tuple,因此函数内部代码完全不用变。 如果本身已经定义了一个list或者tuple,故传入参数时仅仅在你的list和tuple前加一个*号，就可以传参数啦 def calc(*number): sum = 0 for n in number: sum = sum + n*n return sum print calc(1,2,3,4,5) a=[1,2,3,4,5] print calc(*a) 区别在于调用的时候是否加上 * ，如果是list或者tuple，调用时候加*，否则就直接传参数即可。 关键字参数与可变参数区别在于： 可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict 就仅仅是 tuple和dict的区别 def person(name, age, **kw): print 'name:', name, 'age:', age, 'other:', kw &gt;&gt;&gt; person('Jack', 24, **kw) name: Jack age: 24 other: {'city': 'Beijing', 'job': 'Engineer'} 可变参数既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过*args传入：func(*(1, 2, 3))； 关键字参数既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{'a': 1, 'b': 2})。 使用*args和**kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法。</p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>1.变量可以指向函数 2.函数名其实就是指向函数的变量 3.高阶函数：能接收函数做参数的函数 4.函数的参数可以接收变量 5.一个函数可以接收另一个函数作为参数 python函数 1.系统库提供的内部函数 2.第三方提供的函数 3.自定义函数 1.系统库函数 字符函数库()，数字函数库()，网络编程库(urllib2) &gt;&gt;&gt;help(str) 字符串帮助可获得系统中的字符串函数们（同理其他函数） &gt;&gt;&gt;help(str.islower) s.islower() //判断字符串s是否为小写 s.replace(old,new,count) import math #数学库 &gt;&gt;&gt;value=math.sin(3.14/6) &gt;&gt;&gt;math.pi #为派 &gt;&gt;&gt;val = math.sin(math.pi/6) &gt;&gt;&gt;print val 0.5 &gt;&gt;&gt;help(math) #查看math库 &gt;&gt;&gt;math.pow(3,4) # 3的4次方 或者 &gt;&gt;&gt;3**4 #也是代表 3的4次方 这两种方法一个是调用math库，另一个是调用本身的定义 import os &gt;&gt;&gt;os.getcwd() #获得当前的工作路径 &gt;&gt;&gt;help(os.getcwd) os.listdir() #列出指定路径下面的文件 网络函数库 &gt;&gt;&gt;import socket &gt;&gt;&gt;baiduip = socket.gethostbyname('www.baidu.com') //获得ip &gt;&gt;&gt;print baiduip 函数返回多个值 可以 return a,b,c,d &gt;&gt;&gt;sum1,multi,plus,pow = functionaaa(2,10) #函数一起返回，变量一起接收 ，返回的是一个 tuple 元祖 函数可设定默认值但默认值一定写在形参的右侧 函数 有 必选参数，默认参数，可变参数，关键字参数等 当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数 定义默认参数要牢记一点：默认参数必须指向不变对象！ 可变参数：就是传人的参数个数是可变的，可以是0个，1个，或者任意个。 例如 算一组数字的平方和，根本不知道有几个数字，可以考虑将其放置一个list或者tuple传进来。 def calc(numbers): sum=0 for n in numbers: sum = sum + n*n return sum 如果利用可变参数，调用函数就可以简单了，把函数参数改成可变参数： def calc(*numbers): sum = 0 for n in numbers: sum = sum + n*n return sum def(1,2,3,4,5) #而不需要list和tuple啦 定义可变参数和定义list和tuple参数相比，仅仅在参数前面加了一个*号，看着像C/C++指针一样，但在函数内部，参数numbers接收到的是一个tuple,因此函数内部代码完全不用变。 如果本身已经定义了一个list或者tuple,故传入参数时仅仅在你的list和tuple前加一个*号，就可以传参数啦 def calc(*number): sum = 0 for n in number: sum = sum + n*n return sum print calc(1,2,3,4,5) a=[1,2,3,4,5] print calc(*a) 区别在于调用的时候是否加上 * ，如果是list或者tuple，调用时候加*，否则就直接传参数即可。 关键字参数与可变参数区别在于： 可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict 就仅仅是 tuple和dict的区别 def person(name, age, **kw): print 'name:', name, 'age:', age, 'other:', kw &gt;&gt;&gt; person('Jack', 24, **kw) name: Jack age: 24 other: {'city': 'Beijing', 'job': 'Engineer'} 可变参数既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过*args传入：func(*(1, 2, 3))； 关键字参数既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{'a': 1, 'b': 2})。 使用*args和**kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法。</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-23568.htm">犬猫专科医院（猫狗动物医院）</a></p>
                                         <p>下一个：<a href="/news/article-24028.htm">SpringAOP的源码解析</a></p>
@@ -122,16 +123,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-7-16-clash-node.htm" title="「7月16日」最高速度18.7M/S，2024年Netch每天更新免费节点订阅链接">「7月16日」最高速度18.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-18770.htm" title="宠物食品加工厂手续办理流程 宠物食品加工厂手续办理流程图">宠物食品加工厂手续办理流程 宠物食品加工厂手续办理流程图</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-free-clash-subscribe.htm" title="「10月31日」最高速度19.3M/S，2024年Netch每天更新免费节点订阅链接">「10月31日」最高速度19.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-1-share-netch-node.htm" title="「9月1日」最高速度20.8M/S，2024年Netch每天更新免费节点订阅链接">「9月1日」最高速度20.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-7-linux-netch-node.htm" title="「10月7日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接">「10月7日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-21-node-share.htm" title="「8月21日」最高速度20.7M/S，2024年Netch每天更新免费节点订阅链接">「8月21日」最高速度20.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-free-clash.htm" title="「10月1日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接">「10月1日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-30-free-subscribe-node.htm" title="「8月30日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接">「8月30日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-subscribe-node.htm" title="「11月16日」最高速度21.7M/S，2024年Netch每天更新免费节点订阅链接">「11月16日」最高速度21.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-node-subscribe.htm" title="「11月26日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接">「11月26日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20823.htm" title="国考公务员考试报名人数（国考公务员考试报名人数2023）">国考公务员考试报名人数（国考公务员考试报名人数2023）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-high-speed-nodes.htm" title="「9月27日」最高速度21.7M/S，2024年Netch每天更新免费节点订阅链接">「9月27日」最高速度21.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-3-free-netch-node.htm" title="「10月3日」最高速度20.3M/S，2024年Netch每天更新免费节点订阅链接">「10月3日」最高速度20.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-node-subscribe.htm" title="「11月24日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接">「11月24日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27754.htm" title="动物打疫苗去哪打的（动物疫苗证去哪里办怎么办）">动物打疫苗去哪打的（动物疫苗证去哪里办怎么办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-subscribe-node.htm" title="「9月16日」最高速度22.4M/S，2024年Netch每天更新免费节点订阅链接">「9月16日」最高速度22.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share-links.htm" title="「12月2日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接">「12月2日」最高速度20M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-clash.htm" title="「10月19日」最高速度19.2M/S，2024年Netch每天更新免费节点订阅链接">「10月19日」最高速度19.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-22-free-node-subscribe.htm" title="「7月22日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接">「7月22日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-netch-node.htm" title="「10月8日」最高速度21.3M/S，2024年Netch每天更新免费节点订阅链接">「10月8日」最高速度21.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -143,7 +144,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -174,6 +175,15 @@
         </div>
         <div class="container">
             <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                 <p class="text">
                     <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
                 </p>

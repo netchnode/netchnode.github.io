@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>C ++程序进行Fermat原始性测试</title>
         <meta name="description" content="Fermat Primality测试执行以检查给定数字是否为质数。这是此算法的C ++代码。 算法 Begin &nbsp;&nbsp;&nbsp;modulo(base,&nbsp;e,&nbsp;" />
-        <link rel="icon" href="__ADDON__/img/netchnode/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
     <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
@@ -109,7 +109,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<p>Fermat Primality测试执行以检查给定数字是否为质数。这是此算法的C ++代码。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;modulo(base,&nbsp;e,&nbsp;mod) &nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;1 &nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;base &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;mod&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;(a&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;(b&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;%&nbsp;mod End  Begin &nbsp;&nbsp;&nbsp;Fermat(ll&nbsp;m,&nbsp;int&nbsp;iterations) &nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;done &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iterations;&nbsp;i++) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;rand()&nbsp;mod&nbsp;(m&nbsp;-&nbsp;1)&nbsp;+&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(modulo(x,&nbsp;m&nbsp;-&nbsp;1,&nbsp;m)&nbsp;!=&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done &nbsp;&nbsp;&nbsp;return&nbsp;true End</pre> <h2>范例程式码</h2> <pre>#include&nbsp;&lt;cstring&gt; #include&nbsp;&lt;iostream&gt; #include&nbsp;&lt;cstdlib&gt; #define&nbsp;ll&nbsp;long&nbsp;long using&nbsp;namespace&nbsp;std; ll&nbsp;modulo(ll&nbsp;base,&nbsp;ll&nbsp;e,&nbsp;ll&nbsp;mod)&nbsp;{ &nbsp;&nbsp;&nbsp;ll&nbsp;a&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;ll&nbsp;b&nbsp;=&nbsp;base; &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;%&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;(a&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;(b&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;%&nbsp;mod; } bool&nbsp;Fermat(ll&nbsp;m,&nbsp;int&nbsp;iterations)&nbsp;{ &nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;==&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iterations;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;rand()&nbsp;%&nbsp;(m&nbsp;-&nbsp;1)&nbsp;+&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(modulo(x,&nbsp;m&nbsp;-&nbsp;1,&nbsp;m)&nbsp;!=&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;true; } int&nbsp;main()&nbsp;{ &nbsp;&nbsp;&nbsp;int&nbsp;iteration&nbsp;=&nbsp;70; &nbsp;&nbsp;&nbsp;ll&nbsp;num; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;num; &nbsp;&nbsp;&nbsp;if&nbsp;(Fermat(num,&nbsp;iteration)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;else &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;not&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;return&nbsp;0; }</pre> <p>输出结果</p> <pre>Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;13&nbsp;is&nbsp;prime</pre> <div></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>Fermat Primality测试执行以检查给定数字是否为质数。这是此算法的C ++代码。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;modulo(base,&nbsp;e,&nbsp;mod) &nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;1 &nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;base &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;mod&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;(a&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;(b&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;%&nbsp;mod End  Begin &nbsp;&nbsp;&nbsp;Fermat(ll&nbsp;m,&nbsp;int&nbsp;iterations) &nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;done &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iterations;&nbsp;i++) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;rand()&nbsp;mod&nbsp;(m&nbsp;-&nbsp;1)&nbsp;+&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(modulo(x,&nbsp;m&nbsp;-&nbsp;1,&nbsp;m)&nbsp;!=&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done &nbsp;&nbsp;&nbsp;return&nbsp;true End</pre> <h2>范例程式码</h2> <pre>#include&nbsp;&lt;cstring&gt; #include&nbsp;&lt;iostream&gt; #include&nbsp;&lt;cstdlib&gt; #define&nbsp;ll&nbsp;long&nbsp;long using&nbsp;namespace&nbsp;std; ll&nbsp;modulo(ll&nbsp;base,&nbsp;ll&nbsp;e,&nbsp;ll&nbsp;mod)&nbsp;{ &nbsp;&nbsp;&nbsp;ll&nbsp;a&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;ll&nbsp;b&nbsp;=&nbsp;base; &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;%&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;(a&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;(b&nbsp;*&nbsp;b)&nbsp;%&nbsp;mod; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;%&nbsp;mod; } bool&nbsp;Fermat(ll&nbsp;m,&nbsp;int&nbsp;iterations)&nbsp;{ &nbsp;&nbsp;&nbsp;if&nbsp;(m&nbsp;==&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iterations;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;rand()&nbsp;%&nbsp;(m&nbsp;-&nbsp;1)&nbsp;+&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(modulo(x,&nbsp;m&nbsp;-&nbsp;1,&nbsp;m)&nbsp;!=&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;true; } int&nbsp;main()&nbsp;{ &nbsp;&nbsp;&nbsp;int&nbsp;iteration&nbsp;=&nbsp;70; &nbsp;&nbsp;&nbsp;ll&nbsp;num; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;num; &nbsp;&nbsp;&nbsp;if&nbsp;(Fermat(num,&nbsp;iteration)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;else &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;not&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;return&nbsp;0; }</pre> <p>输出结果</p> <pre>Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;13&nbsp;is&nbsp;prime</pre> <div></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-21699.htm">动物防疫站在哪里办公的（动物防疫站是什么编制）</a></p>
                                         <p>下一个：<a href="/news/article-22200.htm">海拉鲁完整地图（海拉鲁图册）</a></p>
@@ -122,16 +123,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-clash.htm" title="「9月21日」最高速度22.5M/S，2024年Netch每天更新免费节点订阅链接">「9月21日」最高速度22.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-node-subscribe-links.htm" title="「12月4日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接">「12月4日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-netch-node.htm" title="「9月14日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接">「9月14日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-subscribe-node.htm" title="「11月22日」最高速度18.2M/S，2024年Netch每天更新免费节点订阅链接">「11月22日」最高速度18.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-node-share.htm" title="「10月4日」最高速度21.4M/S，2024年Netch每天更新免费节点订阅链接">「10月4日」最高速度21.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-linux-netch-node.htm" title="「10月7日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接">「10月7日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-11-3-netch-node.htm" title="「11月3日」最高速度19.9M/S，2024年Netch每天更新免费节点订阅链接">「11月3日」最高速度19.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-netch-node.htm" title="「10月11日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接">「10月11日」最高速度19.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-clash-subscribe.htm" title="「10月28日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接">「10月28日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-netch-node.htm" title="「9月15日」最高速度18.3M/S，2024年Netch每天更新免费节点订阅链接">「9月15日」最高速度18.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-28-linux-netch-node.htm" title="「8月28日」最高速度18.7M/S，2024年Netch每天更新免费节点订阅链接">「8月28日」最高速度18.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-18-free-clash.htm" title="「8月18日」最高速度18.6M/S，2024年Netch每天更新免费节点订阅链接">「8月18日」最高速度18.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share.htm" title="「10月15日」最高速度21.9M/S，2024年Netch每天更新免费节点订阅链接">「10月15日」最高速度21.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-9-free-node-subscribe-links.htm" title="「9月9日」最高速度20.3M/S，2024年Netch每天更新免费节点订阅链接">「9月9日」最高速度20.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-31-free-clash-subscribe.htm" title="「7月31日」最高速度23M/S，2024年Netch每天更新免费节点订阅链接">「7月31日」最高速度23M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-node-share-links.htm" title="「10月16日」最高速度19.2M/S，2024年Netch每天更新免费节点订阅链接">「10月16日」最高速度19.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-clash-subscribe.htm" title="「12月11日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接">「12月11日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-2-free-node-subscribe.htm" title="「8月2日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接">「8月2日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-24-linux-netch-node.htm" title="「7月24日」最高速度18.3M/S，2024年Netch每天更新免费节点订阅链接">「7月24日」最高速度18.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -143,7 +144,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -174,6 +175,15 @@
         </div>
         <div class="container">
             <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                 <p class="text">
                     <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
                 </p>
