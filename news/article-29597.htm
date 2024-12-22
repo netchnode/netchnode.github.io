@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-29597.htm" />
+    <meta charset="utf-8">
+    <title>Linux开发板(树莓派)和服务器进行双向通信(socket)</title>
+        <meta name="description" content="前言  	物联网是目前嵌入开发必备的属性之一，我们常常需要把自己开发板和云端进行交互，本篇博文就记录一下。 	使用Socket来实现Linux开发板和服务器进行双向通信，Python中是默认集成了so" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                        <a class="navbar-brand" href="/">
+                                Netch Node
+                            </a>
+                                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(__ADDON__/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">Linux开发板(树莓派)和服务器进行双向通信(socket)</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<blockquote> <p><strong>前言</strong></p> </blockquote> <p>	物联网是目前嵌入开发必备的属性之一，我们常常需要把自己开发板和云端进行交互，本篇博文就记录一下。</p> <p>	使用Socket来实现Linux开发板和服务器进行双向通信，Python中是默认集成了socket模块的，我们就不需要下载了。</p> <p>	实际上，只要是能运行Python的环境，就可以和服务器进行双向通信，你不必局限于树莓派。</p> <h4 id="一开发环境">一、开发环境</h4> <p>PC系统：windows 10</p> <p>Linux开发板：树莓派4B</p> <p>服务器：阿里云 ECS</p> <p>编程语言：Python</p> <h4 id="二通信代码">二、通信代码</h4> <p>	我认为我的注释是十分详细的，实现简单用函数来调用（贴代码方便），自己开发时，可以用类封装一下。</p> <p><strong>记得先在服务器把要用的端口添加到安全组里面。下面的代码服务器端你不需要做任何修改，开发板端你把公网ip修改成自己的就可以跑通了。</strong></p> <h5 id="1服务器端">（1）服务器端</h5> <pre><code class="language-python">import socket import sys   def socket_service_data():     # 连接     try:         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)         s.bind(ADDR)  # 在不同主机或者同一主机的不同系统下使用实际ip         s.listen(10)     except socket.error as msg:         print(msg)         sys.exit(1)     print("Wait for Connection..................") 	sock, addr = s.accept()          while True:         # 收         buf = sock.recv(BUFSIZ)  # 接收数据         buf1 = buf.decode('utf-8')  # 解码         if not buf:             break         print('Received message:', buf1)         # return buf         # 发         buf = input("input data:")  # 输入要传输的数据         if not buf:             break         sock.send(buf.encode())  # 将要传输的数据编码发送，如果是字符数据就必须要编码发送     # 关闭socket     sock.close()   if __name__ == '__main__':     # 初始化     name = socket.gethostname()     HOST = socket.gethostbyname(name)  # 获取阿里云服务器私网IP，使用ifconfig可查询     PORT = 7000     BUFSIZ = 1024     ADDR = (HOST, PORT)      socket_service_data()</code></pre> <h5 id="2开发板端">（2）开发板端</h5> <pre><code class="language-python">import socket import sys   def sock_client_data():     # 连接     try:         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)         s.connect(ADDR)     except socket.error as msg:         print(msg)         print(sys.exit(1))      while True:         # 发         data = input("input data:")  # 输入要传输的数据         if not data:             break         s.send(data.encode('utf-8'))  # 将要传输的数据编码发送，如果是字符数据就必须要编码发送         # 收         data = s.recv(BUFSIZ)         if not data:             break         print(data.decode('utf-8'))     # 关闭socket     s.close()   if __name__ == '__main__':     # 初始化     HOST = '99.100.101.102'  # 比如 99.100.101.102是你的服务器的公网IP     PORT = 7000  # IP开放的socket端口     BUFSIZ = 1024     ADDR = (HOST, PORT)      sock_client_data()</code></pre> <p>开发板发一句，服务器接受一句，服务器发一句，开发板再接受一句。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/710fd16950e8916687d77928a2ba94cb.jpg" alt="Linux开发板(树莓派)和服务器进行双向通信(socket)"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/8281985bcc24fd1810a4c1e799ee7533.jpg" alt="Linux开发板(树莓派)和服务器进行双向通信(socket)"></p> <h4 id="三通信代码解释">三、通信代码解释</h4> <p>	代码逻辑没什么说的，简单说下socket模块中调用的一下方法。</p> <p>1.<strong><code>sk = socket.socket(socket.AF_INET,  socket.SOCK_STREAM, 0)</code></strong></p> <p><strong>释</strong>：socket.AF_INET  IPv4（默认），socket.SOCK_STREAM　流式socket , for TCP （默认），缺省是0 我上面都没填系统就会根据地址格式和套接类别,自动选择一个合适的协议。</p> <p>2.<strong><code>sk.bind(address)</code></strong></p> <p><strong>释</strong>：s.bind(address) 将套接字绑定到地址。address地址的格式取决于地址族。</p> <p>在AF_INET下，以元组（host,port）的形式表示地址。</p> <p>3.<strong><code>sk.listen(backlog)</code></strong></p> <p><strong>释</strong>：开始监听传入连接。backlog指定在拒绝连接之前，可以挂起的最大连接数量。backlog等于5，表示内核已经接到了连接请求，但服务器还没有调用accept进行处理的连接个数最大为5。这个值不能无限大，因为要在内核中维护连接队列。</p> <p>4.<strong><code>sk.accept()</code></strong></p> <p><strong>释</strong>：接受连接并返回（conn,address）,其中conn是新的套接字对象，可以用来接收和发送数据。address是连接客户端的地址。接收TCP 客户的连接（阻塞式）等待连接的到来。</p> <p>5.<strong><code>sk.connect(address)</code></strong></p> <p><strong>释</strong>：连接到address处的套接字。一般，address的格式为元组（hostname,port）,如果连接出错，返回socket.error错误。</p> <p>6.<strong><code>sk.recv(bufsize[,flag])</code></strong></p> <p><strong>释</strong>：接受套接字的数据。数据以字符串形式返回，bufsize指定最多可以接收的数量。flag提供有关消息的其他信息，通常可以忽略。</p> <p>7.<strong><code>sk.send(string[,flag])</code></strong></p> <p><strong>释</strong>：将string中的数据发送到连接的套接字。<em>返回值是要发送的字节数量</em>，该数量可能小于string的字节大小。即：可能未将指定内容全部发送。</p> <p>8.<strong><code>sk.close()</code></strong></p> <p><strong>释</strong>：关闭套接字</p> <p>9.<strong><code>socket.gethostname()</code></strong></p> <p><strong>释</strong>：gethostname()返回运行程序所在的计算机的主机名</p> <blockquote> <p><strong>后言</strong></p> </blockquote> <p>如果有相关的问题，欢迎在评论区交流，博主知必答。</p> <p><strong>参考文章链接</strong></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/m0_50679156/article/details/120170526"  target="_blank" rel="nofollow">树莓派4B和阿里云服务器进行通信</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/daibigmonster/p/7944525.html"  target="_blank" rel="nofollow">网络编程－Python的socket库</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-29596.htm">MySQL的安装和配置(超详细图文教程)</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-netch-node.htm" title="「11月7日」最高速度18.2M/S，2024年Netch每天更新免费节点订阅链接">「11月7日」最高速度18.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-node-share-links.htm" title="「10月12日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接">「10月12日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28211.htm" title="宠物领养协议范本 宠物领养协议范本免费">宠物领养协议范本 宠物领养协议范本免费</a></li>
+                        <li class="py-2"><a href="/news/article-29143.htm" title="米乐医疗科技有限公司 米乐医疗科技有限公司怎么样">米乐医疗科技有限公司 米乐医疗科技有限公司怎么样</a></li>
+                        <li class="py-2"><a href="/news/article-26360.htm" title="动物疫苗研究所电话（动物医院打疫苗多少钱）">动物疫苗研究所电话（动物医院打疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-high-speed-nodes.htm" title="「10月23日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接">「10月23日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-18-netch-node.htm" title="「7月18日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接">「7月18日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-8-free-netch-node.htm" title="「8月8日」最高速度18.2M/S，2024年Netch每天更新免费节点订阅链接">「8月8日」最高速度18.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-share-netch-node.htm" title="「10月21日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接">「10月21日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-node-subscribe.htm" title="「11月26日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接">「11月26日」最高速度19.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(__ADDON__/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img href="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
