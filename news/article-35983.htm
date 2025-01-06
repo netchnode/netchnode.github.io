@@ -113,6 +113,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <p>高级用法在这里：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/m0_37673307/article/details/81627553"  rel="nofollow">正则表达式（三）——高级用法：search，findall，sub，split</a></p> <h3><span style="color:#3399ea;">8.贪婪与非贪婪模式</span></h3> <blockquote> <p>首先我们以简单的例子来说说<strong><span style="color:#7c79e5;">什么是正则表达式的贪婪与非贪婪匹配</span>？</strong></p> <p>比如假定匹配字符串和正则表达式为：</p> <pre class="has"><code class="language-python">&gt;&gt;&gt; match_str = 'abcdefc'  #匹配字符串</code></pre> <ul> <li><strong>&nbsp;贪婪匹配:</strong></li> </ul> <pre class="has"><code class="language-python">&gt;&gt;&gt; pattern = r'ab.*c' &gt;&gt;&gt; re.match(pattern,match_str) &lt;_sre.SRE_Match object; span=(0, 7), match='abcdefc'&gt;</code></pre> <p>&nbsp;正则表达式一般趋向于最大长度匹配，<span style="color:#f33b45;">总是尝试匹配尽可能多的字符，</span>也就是所谓的贪婪匹配。如上面使用模式p匹配字符串str，结果就是匹配到：<strong>abcdefc。</strong>当出现c时，它还是继续向后找，又找到c，它就把cdef当做是(.*)的匹配</p> <ul> <li><strong>非贪婪匹配</strong>：</li> </ul> <pre class="has"><code class="language-python">&gt;&gt;&gt; pattern = r'ab.*?c'  #非贪婪匹配 &gt;&gt;&gt; re.match(pattern,match_str) &lt;_sre.SRE_Match object; span=(0, 3), match='abc'&gt;</code></pre> <p>非贪婪匹配就是匹配到结果就好，<span style="color:#f33b45;">总是尝试匹配尽可能少的字符</span>。如上面使用模式p匹配字符串str，结果就是匹配到：<strong>abc</strong>。当它遇见c后，它就停止查找，此时把空字符作为(.*)的匹配。</p> </blockquote> <blockquote> <p><span style="color:#7c79e5;"><strong>那么贪婪与非贪婪怎么区分呢？</strong></span></p> <p><strong>re模块默认是贪婪模式；在量词后面直接加上一个问号？就是非贪婪模式。</strong></p> <p>我们熟知的量词有：</p> <table align="left" border="1" cellpadding="1" cellspacing="1" style="width:500px;"> <tbody> <tr> <td>*</td> <td>任意多个</td> </tr> <tr> <td>+</td> <td>至少一个</td> </tr> <tr> <td>？</td> <td>0或1个</td> </tr> <tr> <td>{m,n}</td> <td>m到n个</td> </tr> </tbody> </table> </blockquote> <blockquote> <p>在上一节中的去除HTML中的标签时，我们使用r'&lt;.+&gt;'去匹配得到的却是一堆'\n'，我们来看看原因。拿其中的一行来看，为什么输出'\n'：</p> <pre class="has"><code class="language-html">&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</code></pre> <p>&nbsp;分析：sub函数先做匹配操作，再做替换操作。在匹配操作时，首先匹配 &lt;（左尖括号），&lt;p&gt;的&lt;就已经匹配到，当匹配到&lt;p&gt;的&gt;时，匹配未结束，它继续往后匹配。当匹配到&lt;br/&gt;的&gt;时，仍然未结束，贪婪的向后继续匹配，直到匹配到&lt;/p&gt;的&gt;，再继续去匹配，字符串后面有个‘\n',结束匹配，它就把&nbsp; p&gt;&lt;br/&gt;&lt;/p 这些内容都当做 .+ 来处理。因此匹配到这一行内容除了'\n'，并进行替换操作，替换为空字符''，因此输出'\n'。因此，在 .+ 后面加上?表示非贪婪模式，当碰到&lt;p&gt;的 &gt; 就停止此次匹配。</p> <pre class="has"><code class="language-python">&gt;&gt;&gt; re.sub(r'&lt;.+?&gt;','',s)</code></pre> </blockquote> <p>至此，正则表达式的学习就告一段落了，还是需要在实践中才能检验出真理......</p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-35982.htm">组件-Element&#8212;Checkbox（多选框）</a></p>
+                                        <p>下一个：<a href="/news/article-36766.htm">golang bufio解析</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -122,16 +123,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-29596.htm" title="MySQL的安装和配置(超详细图文教程)">MySQL的安装和配置(超详细图文教程)</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-linux-netch-node.htm" title="「11月12日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接">「11月12日」最高速度21.1M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-23-node-share.htm" title="「12月23日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接">「12月23日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22200.htm" title="海拉鲁完整地图（海拉鲁图册）">海拉鲁完整地图（海拉鲁图册）</a></li>
-                        <li class="py-2"><a href="/news/article-19448.htm" title="不宜养猫的4个属相女人图片大全（不能养猫的生肖怎么破解）">不宜养猫的4个属相女人图片大全（不能养猫的生肖怎么破解）</a></li>
-                        <li class="py-2"><a href="/news/article-27755.htm" title="被猫抓了一下红色划痕没破皮有点痛（被猫抓了有红色抓痕,没破皮）">被猫抓了一下红色划痕没破皮有点痛（被猫抓了有红色抓痕,没破皮）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-clash.htm" title="「10月26日」最高速度19.3M/S，2024年Netch每天更新免费节点订阅链接">「10月26日」最高速度19.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-subscribe-node.htm" title="「11月16日」最高速度21.7M/S，2024年Netch每天更新免费节点订阅链接">「11月16日」最高速度21.7M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-24026.htm" title="python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）">python 可变参数 关键字参数_python函数参数（可变参数tuple和关键字参数list）</a></li>
-                        <li class="py-2"><a href="/news/article-23567.htm" title="基于Python编写一个简单的端口扫描器_python">基于Python编写一个简单的端口扫描器_python</a></li>
+                        <li class="py-2"><a href="/news/article-25896.htm" title="学宠物美容怎么样?有前景吗?（学宠物美容有前途吗）">学宠物美容怎么样?有前景吗?（学宠物美容有前途吗）</a></li>
+                        <li class="py-2"><a href="/news/article-18771.htm" title="延吉安泰动物医院电话号码是多少号（延吉动物医院在哪里）">延吉安泰动物医院电话号码是多少号（延吉动物医院在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-node-share.htm" title="「10月25日」最高速度19.8M/S，2024年Netch每天更新免费节点订阅链接">「10月25日」最高速度19.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-netch.htm" title="「10月22日」最高速度21.4M/S，2024年Netch每天更新免费节点订阅链接">「10月22日」最高速度21.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-34990.htm" title="三国杀展示动态皮肤（三国杀动态皮肤获得）">三国杀展示动态皮肤（三国杀动态皮肤获得）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-netch-node.htm" title="「10月10日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接">「10月10日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-linux-netch-node.htm" title="「1月5日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接">「1月5日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27754.htm" title="动物打疫苗去哪打的（动物疫苗证去哪里办怎么办）">动物打疫苗去哪打的（动物疫苗证去哪里办怎么办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-netch-node.htm" title="「11月21日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接">「11月21日」最高速度22.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31035.htm" title="MySQL中一条SQL查询语句是如何执行的_Mysql">MySQL中一条SQL查询语句是如何执行的_Mysql</a></li>
                     </ul>
     </div>
 </div>
@@ -143,7 +144,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
