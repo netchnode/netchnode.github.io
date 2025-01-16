@@ -2,11 +2,10 @@
 <html class="no-js" lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://netchnode.github.io" />
+        <link rel="canonical" href="https://netchnode.github.io/news/article-41695.htm" />
     <meta charset="utf-8">
-    <title>隐私申明 - NetchNode节点订阅站</title>
-        <meta name="keywords" content="隐私申明 - NetchNode节点订阅站" />
-        <meta name="description" content="隐私申明 - NetchNode节点订阅站" />
+    <title>VUE跨组件数据传递方法详解</title>
+        <meta name="description" content="Q：需求是这样的： 兄弟组件或者子组件执行了某个操作之后，需要在另外一个A组件中执行刷新操作（某个方法）  解决思路： 1.如果是父子组件，可以用事件来处理，on，emit 2.我这个更普遍一点，不一" />
         <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
@@ -30,7 +29,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="newly_discovered_nodes">
+<body data-page="detail">
     <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -96,9 +95,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <h1 class="page-title">隐私申明</h1>
+                            <h1 class="page-title">VUE跨组件数据传递方法详解</h1>
                             <p class="nav">
-                                <a href="/">首页</a> / <span>隐私申明</span>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                             </p>
                         </div>
                     </div>
@@ -110,52 +109,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <p>本平台专注于为用户提供V2ray、Clash等免费节点订阅服务，我们深知用户隐私的重要性，并致力于保护用户的个人信息和隐私安全。本隐私声明旨在明确告知用户本平台如何收集、使用、存储和保护用户的个人信息。</p>
-<p>一、信息收集</p>
-<ol>
-    <li>
-        <p><strong>用户主动提供的信息</strong>：当用户在本平台注册、使用服务或参与特定活动时，可能会主动提供个人信息，如姓名、邮箱地址等。这些信息将仅用于提供服务或活动的目的，并在用户明确同意的情况下进行收集。</p>
-    </li>
-    <li>
-        <p><strong>服务使用数据</strong>：为了优化用户体验和服务质量，本平台可能会自动收集用户在使用服务过程中产生的数据，如访问记录、节点使用情况等。这些数据将用于分析服务使用情况，以便我们持续改进服务。</p>
-    </li>
-</ol>
-<p>二、信息使用</p>
-<ol>
-    <li>
-        <p><strong>提供服务</strong>：本平台将使用收集到的信息来提供用户所需的服务，包括但不限于节点订阅、服务更新通知等。</p>
-    </li>
-    <li>
-        <p><strong>数据分析</strong>：我们可能会对收集到的数据进行分析，以了解用户的使用习惯和需求，从而改进和优化服务。</p>
-    </li>
-    <li>
-        <p><strong>法律合规</strong>：在必要时，我们可能会根据法律法规的要求，向相关部门提供用户的个人信息，以配合执法或调查工作。</p>
-    </li>
-</ol>
-<p>三、信息存储与保护</p>
-<ol>
-    <li>
-        <p><strong>信息安全</strong>：本平台将采取必要的技术和管理措施，确保用户个人信息的安全。我们会对存储的数据进行加密处理，并定期进行安全检查和漏洞修复。</p>
-    </li>
-    <li>
-        <p><strong>信息存储期限</strong>：我们将根据服务需求和相关法律法规的要求，合理确定用户个人信息的存储期限。一旦超出存储期限，我们将对个人信息进行删除或匿名化处理。</p>
-    </li>
-</ol>
-<p>四、用户权利</p>
-<ol>
-    <li>
-        <p><strong>访问与更正</strong>：用户有权访问自己的个人信息，并对其进行更正。用户可以通过本平台提供的联系方式，申请查看或修改自己的个人信息。</p>
-    </li>
-    <li>
-        <p><strong>删除</strong>：在用户停止使用服务或注销账户后，我们将根据用户的请求，删除或匿名化处理其个人信息。</p>
-    </li>
-    <li>
-        <p><strong>投诉与举报</strong>：如果用户认为本平台在处理个人信息方面存在违法行为，可以通过本平台提供的联系方式进行投诉或举报。</p>
-    </li>
-</ol>
-<p>五、隐私声明的更新与修改</p>
-<p>本平台有权根据实际情况和法律法规的变化，对本隐私声明进行更新和修改。任何对隐私声明的修改都将通过本平台公告或电子邮件等方式通知用户。用户在使用服务时，应定期查看隐私声明，以了解最新的个人信息保护措施。</p>
-                </div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p style="margin-left:0pt;">Q：需求是这样的：</p> <p style="margin-left:0pt;">兄弟组件或者子组件执行了某个操作之后，需要在另外一个A组件中执行刷新操作（某个方法）</p> <p style="margin-left:0pt;"> <p style="margin-left:0pt;">解决思路：</p> <p style="margin-left:0pt;">1.如果是父子组件，可以用事件来处理，on，emit</p> <p style="margin-left:0pt;">2.我这个更普遍一点，不一定是父子组件的关系，这里有一个比较一般的解决方法</p> <p style="margin-left:0pt;">&nbsp;&nbsp;解决流程如下</p> <p style="margin-left:0pt;">首先，在vuex中定义一个变量</p> <p style="margin-left:0pt;"><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads3/20220601/40a90067a97a206ee4c5d20d598d53bb.jpg"></p> <p style="margin-left:0pt;">然后，在需要刷新的A组件中，获取对应的bool值，监听变量变化，并触发方法</p> <p style="margin-left:0pt;"><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads3/20220601/a5fbf9135bfbc17797da53b39c1dab24.jpg"></p> <p style="margin-left:0pt;">最后，当我们在某个组件中需要触发A组件的刷新方法时</p> <p style="margin-left:0pt;"><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads3/20220601/136f671b83d7bc560925c0e0eeff6c87.jpg"></p> <p style="margin-left:0pt;">A组件中会自动触发相关方法</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41199.htm">猫粮排行榜最好的品牌有哪些（猫粮排行榜前十名有哪些）</a></p>
+                                        <p>下一个：<a href="/news/article-41696.htm">小型饲料颗粒机价格（小型饲料颗粒机价格是多少）</a></p>
+                                    </div>
+                                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -163,16 +123,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-40208.htm" title="公务员省考2024报名时间（公务员省考报名时间2021年下半年）">公务员省考2024报名时间（公务员省考报名时间2021年下半年）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-clash.htm" title="「10月30日」最高速度19.3M/S，2024年Netch每天更新免费节点订阅链接">「10月30日」最高速度19.3M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-23-node-share.htm" title="「12月23日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接">「12月23日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-7-linux-netch-node.htm" title="「10月7日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接">「10月7日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-31035.htm" title="MySQL中一条SQL查询语句是如何执行的_Mysql">MySQL中一条SQL查询语句是如何执行的_Mysql</a></li>
-                        <li class="py-2"><a href="/news/article-23568.htm" title="犬猫专科医院（猫狗动物医院）">犬猫专科医院（猫狗动物医院）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-high-speed-nodes.htm" title="「12月18日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接">「12月18日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-28687.htm" title="被猫抓伤要***吗?没出血有事吗图片（被猫抓伤了出血了不***没事吧）">被猫抓伤要***吗?没出血有事吗图片（被猫抓伤了出血了不***没事吧）</a></li>
-                        <li class="py-2"><a href="/news/article-32944.htm" title="宠物店寄养需要多少钱（宠物店寄养多少钱?）">宠物店寄养需要多少钱（宠物店寄养多少钱?）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-clash-subscribe.htm" title="「12月12日」最高速度19.9M/S，2024年Netch每天更新免费节点订阅链接">「12月12日」最高速度19.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-38737.htm" title="动物疫苗证明哪里开（动物疫苗证明怎么开）">动物疫苗证明哪里开（动物疫苗证明怎么开）</a></li>
+                        <li class="py-2"><a href="/news/article-38222.htm" title="动物医院的英语单词怎么写的（动物医院 翻译）">动物医院的英语单词怎么写的（动物医院 翻译）</a></li>
+                        <li class="py-2"><a href="/news/article-34852.htm" title="我想开宠物店怎么开店（怎么开宠物店 需要些什么）">我想开宠物店怎么开店（怎么开宠物店 需要些什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-node-subscribe.htm" title="「12月25日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接">「12月25日」最高速度18.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-node-subscribe.htm" title="「10月29日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接">「10月29日」最高速度19.4M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20822.htm" title="动物医院好评语100字通用怎么写呀（动物医院大众点评100字通用评论）">动物医院好评语100字通用怎么写呀（动物医院大众点评100字通用评论）</a></li>
+                        <li class="py-2"><a href="/news/article-34851.htm" title="机器学习笔记 十五：随机森林（Random Forest）评估机器学习模型的特征重要性">机器学习笔记 十五：随机森林（Random Forest）评估机器学习模型的特征重要性</a></li>
+                        <li class="py-2"><a href="/news/article-18771.htm" title="延吉安泰动物医院电话号码是多少号（延吉动物医院在哪里）">延吉安泰动物医院电话号码是多少号（延吉动物医院在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-node-share-links.htm" title="「11月25日」最高速度18.8M/S，2024年Netch每天更新免费节点订阅链接">「11月25日」最高速度18.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27755.htm" title="被猫抓了一下红色划痕没破皮有点痛（被猫抓了有红色抓痕,没破皮）">被猫抓了一下红色划痕没破皮有点痛（被猫抓了有红色抓痕,没破皮）</a></li>
                     </ul>
     </div>
 </div>
@@ -243,7 +203,6 @@
     <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
     <script src="/assets/website/js/frontend/netchnode/main.js"></script>
     <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
-
 </body>
 
 </html>
