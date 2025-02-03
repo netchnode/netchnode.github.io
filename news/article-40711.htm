@@ -7,6 +7,33 @@
     <title>记-Windows环境下Prometheus+alertmanager+windows_exporter+mtail监控部署提起网关日志</title>
         <meta name="description" content="1、概述 最近因项目需要统计服务的负载情况及机器的负载情况，但是项目里面却没有相关统计而服务所在的机器也没有相关的监控，因为工期原因就选择了相对轻量级的prometheus方案。其中windows_e" />
         <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-40711.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="记-Windows环境下Prometheus+alertmanager+windows_exporter+mtail监控部署提起网关日志" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/bf8a972bbb82f0078f95dfc72b8dc82b.webp" />
+        <meta property="og:release_date" content="2025-01-14T07:36:07" />
+    <meta property="og:updated_time" content="2025-01-14T07:36:07" />
+        <meta property="og:description" content="1、概述 最近因项目需要统计服务的负载情况及机器的负载情况，但是项目里面却没有相关统计而服务所在的机器也没有相关的监控，因为工期原因就选择了相对轻量级的prometheus方案。其中windows_e" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="记-Windows环境下Prometheus+alertmanager+windows_exporter+mtail监控部署提起网关日志">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
     <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
@@ -90,7 +117,7 @@
                 </div>
             </div>
         </div>
-        <div class="page-banner bg_cover" style="background-image: url(__ADDON__/img/netchnode/page-banner-1.jpg)">
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -123,16 +150,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-high-speed-nodes.htm" title="「10月23日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接">「10月23日」最高速度21M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23567.htm" title="基于Python编写一个简单的端口扫描器_python">基于Python编写一个简单的端口扫描器_python</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-netch.htm" title="「11月19日」最高速度19.5M/S，2024年Netch每天更新免费节点订阅链接">「11月19日」最高速度19.5M/S，2024年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-32461.htm" title="JavaScript查找字符串中的字母距离">JavaScript查找字符串中的字母距离</a></li>
-                        <li class="py-2"><a href="/news/article-22200.htm" title="海拉鲁完整地图（海拉鲁图册）">海拉鲁完整地图（海拉鲁图册）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-31-share-netch-node.htm" title="「12月31日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接">「12月31日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-29883.htm" title="在哪个平台可以免费领养宠物狗?（在哪个平台可以免费领养宠物狗狗）">在哪个平台可以免费领养宠物狗?（在哪个平台可以免费领养宠物狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-31398.htm" title="猫给抓了出一点点血要紧吗我和酒精擦了（猫抓了一下出了点血用酒精消毒可以吗）">猫给抓了出一点点血要紧吗我和酒精擦了（猫抓了一下出了点血用酒精消毒可以吗）</a></li>
                         <li class="py-2"><a href="/news/article-19448.htm" title="不宜养猫的4个属相女人图片大全（不能养猫的生肖怎么破解）">不宜养猫的4个属相女人图片大全（不能养猫的生肖怎么破解）</a></li>
-                        <li class="py-2"><a href="/news/article-31397.htm" title="动物医院好评30字通用写法 动物医院好评30字通用写法怎么写">动物医院好评30字通用写法 动物医院好评30字通用写法怎么写</a></li>
-                        <li class="py-2"><a href="/news/article-26360.htm" title="动物疫苗研究所电话（动物医院打疫苗多少钱）">动物疫苗研究所电话（动物医院打疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-node-share-links.htm" title="「11月11日」最高速度22.2M/S，2024年Netch每天更新免费节点订阅链接">「11月11日」最高速度22.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-node-share.htm" title="「1月19日」最高速度22.8M/S，2025年Netch每天更新免费节点订阅链接">「1月19日」最高速度22.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30566.htm" title="网络地址匹配">网络地址匹配</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-node-share-links.htm" title="「11月25日」最高速度18.8M/S，2024年Netch每天更新免费节点订阅链接">「11月25日」最高速度18.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22197.htm" title="C ++程序进行Fermat原始性测试">C ++程序进行Fermat原始性测试</a></li>
+                        <li class="py-2"><a href="/news/article-22653.htm" title="宠物到哪领养比较好（宠物哪里领养）">宠物到哪领养比较好（宠物哪里领养）</a></li>
+                        <li class="py-2"><a href="/news/article-38223.htm" title="被猫咬了一口要打针吗（被猫咬了一口需要打几针）">被猫咬了一口要打针吗（被猫咬了一口需要打几针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-node-subscribe.htm" title="「11月24日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接">「11月24日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -144,16 +171,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
@@ -163,9 +190,9 @@
             </div>
         </div>
     </section>
-        <footer id="footer" class="footer-area bg_cover" style="background-image: url(__ADDON__/img/netchnode/footer-bg.jpg)">
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
         <div class="footer-shape">
-            <img href="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
         </div>
         <div class="container">
             <div class="footer-copyright text-center">
