@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-51729.htm" />
+    <meta charset="utf-8">
+    <title>MKL库矩阵乘法(cblas_dgemm)</title>
+        <meta name="description" content="MKL库中基本线性代数子程序，BLAS(Basic Linear Algebra Subprograms)库，是一个API标淮，用以规范发布基础线性代数操作的数值库（如向量或矩阵乘法）。其中CBLAS" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-51729.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="MKL库矩阵乘法(cblas_dgemm)" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/839a7e0abcda898d849dd7da0fef8581.webp" />
+        <meta property="og:release_date" content="2025-02-05T08:21:13" />
+    <meta property="og:updated_time" content="2025-02-05T08:21:13" />
+        <meta property="og:description" content="MKL库中基本线性代数子程序，BLAS(Basic Linear Algebra Subprograms)库，是一个API标淮，用以规范发布基础线性代数操作的数值库（如向量或矩阵乘法）。其中CBLAS" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MKL库矩阵乘法(cblas_dgemm)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">MKL库矩阵乘法(cblas_dgemm)</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>MKL库中基本线性代数子程序，<strong>BLAS(Basic Linear Algebra Subprograms)库</strong>，是一个API标淮，用以规范发布基础线性代数操作的数值库（如向量或矩阵乘法）。其中<strong>CBLAS</strong>是<strong>BLAS</strong>的<em>C语言</em>接口。</p> <p>库中前缀用来区分所支持处理的数据类型。</p> <table> <thead> <tr> <th>前缀</th> <th>描述</th> <th>函数名系列</th> <th>描述</th> </tr> </thead> <tbody> <tr> <td>s-</td> <td>实数、单精度</td> <td>ge...</td> <td>一般矩阵</td> </tr> <tr> <td>c-</td> <td>复数、单精度</td> <td>sy...</td> <td>对称矩阵</td> </tr> <tr> <td>d-</td> <td>实数、双精度</td> <td>he...</td> <td>Hermitian矩阵</td> </tr> <tr> <td>z-</td> <td>复数、双精度</td> <td>tr...</td> <td>三角矩阵</td> </tr> </tbody> </table> <p><strong>基本矩阵、向量操作</strong></p> <table> <thead> <tr> <th>函数（采用常规的前缀为d的接口）</th> <th>描述</th> </tr> </thead> <tbody> <tr> <td>cblas_dasum</td> <td>向量元素值模的总和</td> </tr> <tr> <td>cblas_daxpy</td> <td>缩放向量</td> </tr> <tr> <td>cblas_dcopy</td> <td>复制向量</td> </tr> <tr> <td>cblas_ddot</td> <td>向量点积</td> </tr> <tr> <td>cblas_dswap</td> <td>交换两向量</td> </tr> <tr> <td>cblas_dgemv</td> <td>常规矩阵×向量</td> </tr> </tbody> </table> <p>重点介绍矩阵的乘法运算。</p> <p>此示例是利用Intel 的MKL库函数完成计算矩阵（乘法）运算，计算式为：</p> <div class="math display">\[C=\alpha*A*B+\beta*C<br /> \]</div> <p>其通过调整<span class="math inline">\(A、B、C\)</span>矩阵及其系数，同样可以完成矩阵的加减；如若只需矩阵<span class="math inline">\(A\)</span>与<span class="math inline">\(B\)</span>的乘积，设置<span class="math inline">\(\alpha=1,\beta=0\)</span>即可。</p> <p>其中<span class="math inline">\(A\)</span>为<span class="math inline">\(m\times k\)</span>维矩阵，<span class="math inline">\(B\)</span>为<span class="math inline">\(k\times n\)</span>维矩阵，<span class="math inline">\(C\)</span>为<span class="math inline">\(m\times n\)</span>维矩阵。</p> <p>使用的函数为<strong>cblas_dgemm</strong>(Double precision GEneric Matrix Multiplication)，完成一般的矩阵乘法。</p> <h2 id="1-cblas_dgemm参数详解">1 cblas_dgemm参数详解</h2> <pre><code class="language-C++">fun cblas_dgemm(Layout,		//指定行优先(CblasRowMajor,C)或列优先(CblasColMajor,Fortran)数据排序                TransA,		//指定是否转置矩阵A                TransB,		//指定是否转置矩阵B                M,		//矩阵A和C的行数                N,		//矩阵B和C的列数                K,		//矩阵A的列，B的行                alpha,		//矩阵A和B乘积的比例因子                A,		//A矩阵                lda,		//矩阵A的第一维的大小                B,		//B矩阵                ldb,		//矩阵B的第一维的大小                beta,		//矩阵C的比例因子                C,		//(input/output) 矩阵C                ldc		//矩阵C的第一维的大小                )</code></pre> <h2 id="2-定义待处理矩阵">2 定义待处理矩阵</h2> <pre><code class="language-c++">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include "mkl.h"		// 调用mkl头文件  #define min(x,y) (((x) &lt; (y)) ? (x) : (y))</code></pre> <pre><code class="language-C++">double* A, * B, * C;		//声明三个矩阵变量，并分配内存 int m, n, k, i, j;			//声明矩阵的维度，其中 double alpha, beta;  m = 2000, k = 200, n = 1000; alpha = 1.0; beta = 0.0;  A = (double*)mkl_malloc(m * k * sizeof(double), 64);	//按照矩阵维度分配内存 B = (double*)mkl_malloc(k * n * sizeof(double), 64);	//mkl_malloc用法与malloc相似，64表示64位 C = (double*)mkl_malloc(m * n * sizeof(double), 64); if (A == NULL || B == NULL || C == NULL) {		//判空      mkl_free(A);				     mkl_free(B);     mkl_free(C);     return 1; }  for (i = 0; i &lt; (m * k); i++) {		//赋值     A[i] = (double)(i + 1); }  for (i = 0; i &lt; (k * n); i++) {     B[i] = (double)(-i - 1); }  for (i = 0; i &lt; (m * n); i++) {     C[i] = 0.0; }</code></pre> <p>其中<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>矩阵设置为：</p> <div class="math display">\[\begin{array}{l}<br /> A = \left[ {\begin{array}{*{20}{c}}<br /> {1.0}&amp;{2.0}&amp; \cdots &amp;{1000.0}\\<br /> {1001.0}&amp;{1002.0}&amp; \cdots &amp;{2000.0}\\<br />  \vdots &amp; \vdots &amp; \ddots &amp; \cdots \\<br /> {999001.0}&amp;{999002.0}&amp; \cdots &amp;{1000000.0}<br /> \end{array}} \right]  \space<br /> B = \left[ {\begin{array}{*{20}{c}}<br /> {-1.0}&amp;{-2.0}&amp; \cdots &amp;{-1000.0}\\<br /> {-1001.0}&amp;{-1002.0}&amp; \cdots &amp;{-2000.0}\\<br />  \vdots &amp; \vdots &amp; \ddots &amp; \cdots \\<br /> {-999001.0}&amp;{-999002.0}&amp; \cdots &amp;{-1000000.0}<br /> \end{array}} \right]<br /> \end{array}<br /> \]</div> <p><span class="math inline">\(C\)</span>矩阵为全0。</p> <h2 id="3-执行矩阵乘法">3 执行矩阵乘法</h2> <p>回到例子中，对照上面的参数，将C矩阵用A与B的矩阵乘法表示：</p> <pre><code class="language-c++">cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, n, k, alpha, A, k, B, n, beta, C, n);</code></pre> <p>执行后的得到结果如下：</p> <div align="center"><img decoding="async" src="https://img2022.cnblogs.com/blog/1602810/202204/1602810-20220421184623670-346312151.png" alt="MKL库矩阵乘法(cblas_dgemm)" style="zoom: 67%"/></div> <h2 id="完整代码">完整代码</h2> <pre><code class="language-C++">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include "mkl.h"  #define min(x,y) (((x) &lt; (y)) ? (x) : (y))  int main() {     double* A, * B, * C;     int m, n, k, i, j;     double alpha, beta;       m = 2000, k = 200, n = 1000;      alpha = 1.0; beta = 0.0;      A = (double*)mkl_malloc(m * k * sizeof(double), 64);     B = (double*)mkl_malloc(k * n * sizeof(double), 64);     C = (double*)mkl_malloc(m * n * sizeof(double), 64);     if (A == NULL || B == NULL || C == NULL) {          mkl_free(A);         mkl_free(B);         mkl_free(C);         return 1;     }       for (i = 0; i &lt; (m * k); i++) {         A[i] = (double)(i + 1);     }      for (i = 0; i &lt; (k * n); i++) {         B[i] = (double)(-i - 1);     }      for (i = 0; i &lt; (m * n); i++) {         C[i] = 0.0;     }      cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,         m, n, k, alpha, A, k, B, n, beta, C, n);       for (i = 0; i &lt; min(m, 6); i++) {         for (j = 0; j &lt; min(k, 6); j++) {             printf("%12.0f", A[j + i * k]);         }         printf("\n");     }      for (i = 0; i &lt; min(k, 6); i++) {         for (j = 0; j &lt; min(n, 6); j++) {             printf("%12.0f", B[j + i * n]);         }         printf("\n");     }      for (i = 0; i &lt; min(m, 6); i++) {         for (j = 0; j &lt; min(n, 6); j++) {             printf("%12.5G", C[j + i * n]);         }         printf("\n");     }      mkl_free(A);     mkl_free(B);     mkl_free(C);      return 0; }</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-51728.htm">mysql主从复制+读写分离+负载均衡</a></p>
+                                        <p>下一个：<a href="/news/article-52260.htm">上海地区宠物领养中心 上海地区宠物领养中心地址</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-30566.htm" title="网络地址匹配">网络地址匹配</a></li>
+                        <li class="py-2"><a href="/news/article-22197.htm" title="C ++程序进行Fermat原始性测试">C ++程序进行Fermat原始性测试</a></li>
+                        <li class="py-2"><a href="/news/article-35627.htm" title="打动物疫苗有什么过敏反应症状图片（动物疫苗打到人身上会怎么样）">打动物疫苗有什么过敏反应症状图片（动物疫苗打到人身上会怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-35982.htm" title="组件-Element&#8212;Checkbox（多选框）">组件-Element&#8212;Checkbox（多选框）</a></li>
+                        <li class="py-2"><a href="/news/article-21279.htm" title="动物疫苗接种时间表格模板下载 动物疫苗接种时间表格模板下载安装">动物疫苗接种时间表格模板下载 动物疫苗接种时间表格模板下载安装</a></li>
+                        <li class="py-2"><a href="/news/article-32463.htm" title="Homebrew安装、换源">Homebrew安装、换源</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe.htm" title="「11月5日」最高速度21.2M/S，2024年Netch每天更新免费节点订阅链接">「11月5日」最高速度21.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-high-speed-nodes.htm" title="「1月28日」最高速度21.5M/S，2025年Netch每天更新免费节点订阅链接">「1月28日」最高速度21.5M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-node-share-links.htm" title="「2月2日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接">「2月2日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44690.htm" title="广州宠物用品（广州宠物用品批发进货渠道）">广州宠物用品（广州宠物用品批发进货渠道）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
