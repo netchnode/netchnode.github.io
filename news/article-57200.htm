@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-57200.htm" />
+    <meta charset="utf-8">
+    <title>access update语句执行_用pymysql实现对多行数据的insert和update加速</title>
+        <meta name="description" content="本文对pymysql操作MySQL，insert和update的速度优化测试对比。对于insert操作来说，“一个事务处理多行的方式”比“一个事务处理一行的方式”插入相同的数据快了313倍，即插入20" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-57200.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="access update语句执行_用pymysql实现对多行数据的insert和update加速" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/aada2b6c141178630991447191e00679.webp" />
+        <meta property="og:release_date" content="2025-02-15T05:23:54" />
+    <meta property="og:updated_time" content="2025-02-15T05:23:54" />
+        <meta property="og:description" content="本文对pymysql操作MySQL，insert和update的速度优化测试对比。对于insert操作来说，“一个事务处理多行的方式”比“一个事务处理一行的方式”插入相同的数据快了313倍，即插入20" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="access update语句执行_用pymysql实现对多行数据的insert和update加速">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">access update语句执行_用pymysql实现对多行数据的insert和update加速</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/03a32113307ed739253a304f95bfec95.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> </h1> <p>本文对pymysql操作MySQL，insert和update的速度优化测试对比。对于insert操作来说，“一个事务处理多行的方式”比“一个事务处理一行的方式”插入相同的数据快了313倍，即插入2000个记录，一个事务一行的方式需要30.99秒，优化方式仅需要0.099秒。MySQL原始语法是支持对insert语句一次插入多行记录，即insert into table_name values ，后面跟着多行值。</p> <p>但是对于update语句来说，MySQL并没有原始的语法支持一次update处理多行记录，update原始语句仅支持一次处理多个字段。本文将update语法和case when 语法结合起来，可以实现一个事务update更新多行记录，经测试这种方式比常规的方式快了283倍，即处理2000个记录，常规方式需要31.19秒，优化方式仅需要0.11秒。</p> </h1> <p>我们可以用Python封装一个MySQL连接的类，在类中实现对MySQL操作的类方法。</p> <p>例如，我们可以新建一个MySqlConnector的类，实现初始化类方法如下：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/fcc91815f58e05c310f8e37490f1480f.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>这个方法中，首先从mysql_config.ini配置文件中，加载MySQL的配置数据，如host、port、user、pwd、db_name等；然后利用pymysql包的连接方法，创建一个MySQL的连接。</p> <p>然后，我们定义MySqlConnector类的查询方法：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/31beb2be765a6c05deee95f18ac264cb.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>这个方法可以执行对mysql的查询操作。</p> <p>其次，我们再定义MySqlConnector类的update方法：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/0c2a4d6f290bca1340e42bdfd8432ff8.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>这个update方法，可以执行对mysql的插入、更新、删除操作。</p> <p>最后，定义MySqlConnector类的close方法：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/fcdef275b9bf22efe77e8d269431bdc8.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>对MySQL查询或者其他操作执行完毕之后，一定要执行该方法，关闭mysql的连接。因为单位时间里MySQL的连接数有最大的上限，当Mysql的连接数太多时，会造成MySQL的性能下，甚至会出现事务进程卡死的情况。</p> </h1> <p>我们先定义一个函数来计算某个函数的执行时间：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/75dd584766b423053a8b9cc32ba227dc.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>我们网上任意找2000个文字，来做这个优化对比测试：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/29c465133a18ce10993a39a4a4b0c74f.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>所以现在的任务是需要将这2000行的文本，插入mysql中。</p> <p><strong>1、我们先定义一种插入方式：一个事务插入一行数据的方式</strong></p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/17aab21a8e263f78b8ff7cb0e2c72970.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>执行看看需要多少时间：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/9cd92d7ab5215fcb1872b15755e658e6.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>我们得到，一个事务插入一行的方式，将2000个文本全部插入，需要30.99秒。</p> <p><strong>2、我们定义另一种方式：一个事务插入多行记录值</strong></p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/0bf8468e72878c204c0aac8d44cf35af.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>看看这种方式的执行时间：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/2091d024a343e148c4d90d8e1d6399c6.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>我们发现这种方式，插入2000行数据，仅需要0.099秒，比之前的方式，速度快了313倍。</p> </h1> <p>同样地，使用如上的2000行文本数据，现在需要根据 id 将mysql中的某个字段更新成这个2000行文本。</p> <p><strong>1、常规的方式是</strong></p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/68cf25f365f28a85f3b339175bdf5865.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>执行耗时：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/3d1465ed0fa716f1271667ee3d1f8370.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>这种一个事务更新一行记录的方式，处理2000行数据，需要耗时31.19秒。</p> <p><strong>2、能不能写成一个事务更新多行的方式</strong></p> <p>虽然MySQL原生语法，没有一次update更新多行记录的语法。但是，我们可以结合case when 语法，很优雅的实现这个需求。</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/61210e28fe36b2761746564aec06819f.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>执行时间：</p> <div class="pgc-img">   <img decoding="async" src="http://img.555519.xyz/uploads/20221230/9a766def8d3468eff01ccfd8d3107810.jpg" alt="access update语句执行_用pymysql实现对多行数据的insert和update加速"> </div> <p>发现，采用这种方式，更新2000行文本的时间，仅需要0.11秒，比常规方式加速了283倍。</p> </h1> <p>对于MySQL的insert和update的操作，尽可能的使用一个事务处理多行记录值的方式，这样可以大大提升对MySQL的操作性能。另外需要注意的时，当使用一个事务处理多行记录值时，可能会出现如下的报错信息："Got a packet bigger than 'max_allowed_packet' bytes"。</p> <p>一个事务处理多行虽好，但是事务处理多行也是有最大上限的。当出现这个报错信息时，需要将数据分成几个batch，然后每个batch来使用一个事务处理多行的方式即可。</p> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-57199.htm">springboot +restTemplate配置</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-53324.htm" title="Java程序查找数字的偶数因数之和">Java程序查找数字的偶数因数之和</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-node-subscribe.htm" title="「1月8日」最高速度19.9M/S，2025年Netch每天更新免费节点订阅链接">「1月8日」最高速度19.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-netch-node.htm" title="「1月2日」最高速度21M/S，2025年Netch每天更新免费节点订阅链接">「1月2日」最高速度21M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-free-netch-node.htm" title="「2月8日」最高速度18.5M/S，2025年Netch每天更新免费节点订阅链接">「2月8日」最高速度18.5M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25426.htm" title="动物疫苗龙头（动物疫苗龙头股一览）">动物疫苗龙头（动物疫苗龙头股一览）</a></li>
+                        <li class="py-2"><a href="/news/article-27290.htm" title="mysql in变量值的处理方案">mysql in变量值的处理方案</a></li>
+                        <li class="py-2"><a href="/news/article-18770.htm" title="宠物食品加工厂手续办理流程 宠物食品加工厂手续办理流程图">宠物食品加工厂手续办理流程 宠物食品加工厂手续办理流程图</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="「12月1日」最高速度21.2M/S，2024年Netch每天更新免费节点订阅链接">「12月1日」最高速度21.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-52787.htm" title="狗粮品种价格图片（狗粮品种价格图片表）">狗粮品种价格图片（狗粮品种价格图片表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-clash.htm" title="「2月14日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「2月14日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

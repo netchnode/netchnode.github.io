@@ -1,0 +1,232 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-56638.htm" />
+    <meta charset="utf-8">
+    <title>Python实现数据透视表</title>
+        <meta name="description" content="用Python里的Pandas可以实现，虽然感觉Excel更方便  1.groupby + agg 不够直观，不好看 对贷款年份，贷款种类创建数据透视 train_data.groupby(['yea" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-56638.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="Python实现数据透视表" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/08846934f287b9dc10ace56baffd6cc5.webp" />
+        <meta property="og:release_date" content="2025-02-14T10:03:50" />
+    <meta property="og:updated_time" content="2025-02-14T10:03:50" />
+        <meta property="og:description" content="用Python里的Pandas可以实现，虽然感觉Excel更方便  1.groupby + agg 不够直观，不好看 对贷款年份，贷款种类创建数据透视 train_data.groupby(['yea" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python实现数据透视表">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">Python实现数据透视表</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>用Python里的Pandas可以实现，虽然感觉Excel更方便</p> <h3> <a id="1groupby__agg_1" rel="nofollow"></a>1.groupby + agg</h3> <p><strong>不够直观，不好看</strong><br /> 对贷款年份，贷款种类创建数据透视</p> <pre><code class="prism language-python">train_data<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span>d_roat <span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'isDefault'</span><span class="token punctuation">,</span> <span class="token string">'mean'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/c2e1012f638001b58c9d7944e8b63ec1.jpg" alt="Python实现数据透视表"></p> <h3> <a id="2_crosstab_9" rel="nofollow"></a>2. crosstab</h3> <pre><code class="prism language-python">pandas<span class="token punctuation">.</span>crosstab<span class="token punctuation">(</span>index<span class="token punctuation">,</span> columns<span class="token punctuation">,</span>values<span class="token punctuation">,</span> rownames<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> colnames<span class="token punctuation">,</span>  				aggfunc<span class="token punctuation">,</span> margins<span class="token punctuation">,</span> margins_name<span class="token punctuation">,</span> dropna<span class="token punctuation">,</span> normalize<span class="token punctuation">)</span> </code></pre> <p>主要用到的参数：<br /> index：选哪个变量做数据透视表的行<br /> columns：选哪个变量做数据透视表的列<br /> values：要聚合的值<br /> aggfunc：使用的聚合函数<br /> margins：是否添加汇总列/行<br /> margins_name：汇总行/列的名字</p> <h4> <a id="_22" rel="nofollow"></a>例子</h4> <p>对贷款年份，贷款种类创建数据透视</p> <pre><code class="prism language-python">pd<span class="token punctuation">.</span>crosstab<span class="token punctuation">(</span>train_data<span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> train_data<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> train_data<span class="token punctuation">[</span><span class="token string">'loan_id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> aggfunc<span class="token operator">=</span><span class="token string">'count'</span><span class="token punctuation">,</span>margins <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span> margins_name <span class="token operator">=</span> <span class="token string">'合计'</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/526309472bc88f0faec4c841a9f08fc9.jpg" alt="Python实现数据透视表"><br /> 可以直接看出交叉组合之后违约比例</p> <pre><code class="prism language-python">pd<span class="token punctuation">.</span>crosstab<span class="token punctuation">(</span>train_data<span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> train_data<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> train_data<span class="token punctuation">[</span><span class="token string">'isDefault'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> aggfunc<span class="token operator">=</span><span class="token string">'mean'</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/45232ccc289a401e59139116678d6649.jpg" alt="Python实现数据透视表"></p> <h3> <a id="3groupby__pivot_33" rel="nofollow"></a>3.groupby + pivot</h3> <pre><code class="prism language-python">train_data<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> as_index <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'isDefault'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pivot<span class="token punctuation">(</span><span class="token string">'year_of_loan'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">,</span> <span class="token string">'isDefault'</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/4dbc21cbed7a933470130fbd950d9af7.jpg" alt="Python实现数据透视表"></p> <h3> <a id="pivot_table_39" rel="nofollow"></a>pivot_table</h3> <pre><code class="prism language-python">pandas<span class="token punctuation">.</span>pivot_table<span class="token punctuation">(</span>data<span class="token punctuation">,</span> values<span class="token punctuation">,</span> index<span class="token punctuation">,</span> columns<span class="token punctuation">,</span> aggfunc<span class="token punctuation">,</span> fill_value<span class="token punctuation">,</span>  					margins<span class="token punctuation">,</span> dropna<span class="token punctuation">,</span> margins_name<span class="token punctuation">,</span> observed<span class="token punctuation">,</span> sort<span class="token punctuation">)</span> </code></pre> <p>常用参数与crosstab一致</p> <h4> <a id="_46" rel="nofollow"></a>例子</h4> <p>实现同样的数据透视表</p> <pre><code class="prism language-python">pd<span class="token punctuation">.</span>pivot_table<span class="token punctuation">(</span>train_data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">,</span> <span class="token string">'isDefault'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 			  values<span class="token operator">=</span><span class="token string">'isDefault'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  			  aggfunc<span class="token operator">=</span><span class="token string">'count'</span><span class="token punctuation">,</span>  margins <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span> margins_name <span class="token operator">=</span> <span class="token string">'合计'</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/75ea8975f6f634ccfb727a9f164d8219.jpg" alt="Python实现数据透视表"></p> <pre><code class="prism language-python">pd<span class="token punctuation">.</span>pivot_table<span class="token punctuation">(</span>train_data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">,</span> <span class="token string">'isDefault'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 			   values<span class="token operator">=</span><span class="token string">'isDefault'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'year_of_loan'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  			   aggfunc<span class="token operator">=</span><span class="token string">'mean'</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/ffa5a0da5a789491f48cfdd1052a473c.jpg" alt="Python实现数据透视表"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-56080.htm">让猫挠了出血过了24小时有事吗（让猫挠了出血过了24小时有事吗会感染吗）</a></p>
+                                        <p>下一个：<a href="/news/article-56639.htm">成都免费宠物救援中心（成都市宠物救助站是24小时的吗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-24250.htm" title="上海免费领养猫上海宠物领（上海有没有免费领养宠物的）">上海免费领养猫上海宠物领（上海有没有免费领养宠物的）</a></li>
+                        <li class="py-2"><a href="/news/article-21699.htm" title="动物防疫站在哪里办公的（动物防疫站是什么编制）">动物防疫站在哪里办公的（动物防疫站是什么编制）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-clash.htm" title="「2月14日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「2月14日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-share-netch-node.htm" title="「11月9日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接">「11月9日」最高速度21.6M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-50674.htm" title="helm部署单节点redis">helm部署单节点redis</a></li>
+                        <li class="py-2"><a href="/news/article-40209.htm" title="移动制砂机一套多少钱一台（制砖机生产厂家）">移动制砂机一套多少钱一台（制砖机生产厂家）</a></li>
+                        <li class="py-2"><a href="/news/article-39240.htm" title="无货源网店怎么发货视频（无货源开店怎么发货）">无货源网店怎么发货视频（无货源开店怎么发货）</a></li>
+                        <li class="py-2"><a href="/news/article-19901.htm" title="宠物医院的审批流程是什么（宠物医院申请条件）">宠物医院的审批流程是什么（宠物医院申请条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-clash.htm" title="「12月21日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接">「12月21日」最高速度18.9M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-subscribe-node.htm" title="「1月9日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接">「1月9日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
