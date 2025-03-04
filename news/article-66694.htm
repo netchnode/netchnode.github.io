@@ -1,0 +1,232 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-66694.htm" />
+    <meta charset="utf-8">
+    <title>react项目配置postcss-px2rem-exclude</title>
+        <meta name="description" content="1、安装 yarn add postcss-px2rem-exclude 2、在config-overrides.js文件中配置addPostcssPlugins const{override,add" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-66694.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="react项目配置postcss-px2rem-exclude" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/79a25d0d9977f088f5103c87cb07fb31.webp" />
+        <meta property="og:release_date" content="2025-03-03T08:15:07" />
+    <meta property="og:updated_time" content="2025-03-03T08:15:07" />
+        <meta property="og:description" content="1、安装 yarn add postcss-px2rem-exclude 2、在config-overrides.js文件中配置addPostcssPlugins const{override,add" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="react项目配置postcss-px2rem-exclude">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">react项目配置postcss-px2rem-exclude</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>1、安装</p> <pre><code class="prism language-javascript">yarn add postcss<span class="token operator">-</span>px2rem<span class="token operator">-</span>exclude</code></pre> <p>2、在<code>config-overrides.js</code>文件中配置<code>addPostcssPlugins</code></p> <pre><code class="prism language-javascript"><span class="token keyword">const</span><span class="token punctuation">{<!-- --></span>override<span class="token punctuation">,</span>addPostcssPlugins<span class="token punctuation">}</span><span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'customize-cra'</span><span class="token punctuation">)</span></code></pre> <pre><code class="prism language-javascript">module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token function">override</span><span class="token punctuation">(</span><span class="token function">addPostcssPlugins</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'postcss-px2rem-exclude'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>       remUnit<span class="token operator">:</span><span class="token number">75</span><span class="token punctuation">,</span>       propList<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'*'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment">// exclude: /node_modules/,</span>       exclude<span class="token operator">:</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules\/antd-mobile</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre> <p>3、在<code>index.html</code>文件的<code>&lt;head&gt;&lt;/ head&gt;</code>中添加配置即可，我这里是以750px为基准</p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">win<span class="token punctuation">,</span> lib</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> doc<span class="token operator">=</span> win<span class="token punctuation">.</span>document<span class="token punctuation">;</span><span class="token keyword">var</span> docEl<span class="token operator">=</span> doc<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span><span class="token keyword">var</span> metaEl<span class="token operator">=</span> doc<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'meta[name="viewport"]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> flexibleEl<span class="token operator">=</span> doc<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'meta[name="flexible"]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> dpr<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token keyword">var</span> scale<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token keyword">var</span> tid<span class="token punctuation">;</span><span class="token keyword">var</span> flexible<span class="token operator">=</span> lib<span class="token punctuation">.</span>flexible<span class="token operator">||</span><span class="token punctuation">(</span>lib<span class="token punctuation">.</span>flexible<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>metaEl<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>           console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"将根据已有的meta标签来设置缩放比例"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> match<span class="token operator">=</span> metaEl<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"content"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">initial-scale=([d.]+)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>match<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             scale<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>match<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             dpr<span class="token operator">=</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span> scale<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>flexibleEl<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> content<span class="token operator">=</span> flexibleEl<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"content"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> initialDpr<span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">initial-dpr=([d.]+)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> maximumDpr<span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">maximum-dpr=([d.]+)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>initialDpr<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>               dpr<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>initialDpr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               scale<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span> dpr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span>maximumDpr<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>               dpr<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>maximumDpr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               scale<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span> dpr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>dpr<span class="token operator">&amp;&amp;</span><span class="token operator">!</span>scale<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> isAndroid<span class="token operator">=</span> win<span class="token punctuation">.</span>navigator<span class="token punctuation">.</span>appVersion<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">android</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> isIPhone<span class="token operator">=</span> win<span class="token punctuation">.</span>navigator<span class="token punctuation">.</span>appVersion<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">iphone</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> devicePixelRatio<span class="token operator">=</span> win<span class="token punctuation">.</span>devicePixelRatio<span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>isIPhone<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</span><span class="token keyword">if</span><span class="token punctuation">(</span>devicePixelRatio<span class="token operator">&gt;=</span><span class="token number">3</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span>dpr<span class="token operator">||</span> dpr<span class="token operator">&gt;=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>               dpr<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>devicePixelRatio<span class="token operator">&gt;=</span><span class="token number">2</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span>dpr<span class="token operator">||</span> dpr<span class="token operator">&gt;=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>               dpr<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span>               dpr<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 其他设备下，仍旧使用1倍的方案</span>             dpr<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span>           scale<span class="token operator">=</span><span class="token number">1</span><span class="token operator">/</span> dpr<span class="token punctuation">;</span><span class="token punctuation">}</span>          docEl<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-dpr"</span><span class="token punctuation">,</span> dpr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>metaEl<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>           metaEl<span class="token operator">=</span> doc<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"meta"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           metaEl<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"viewport"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           metaEl<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"content"</span><span class="token punctuation">,</span><span class="token string">"initial-scale="</span><span class="token operator">+</span>               scale<span class="token operator">+</span><span class="token string">", maximum-scale="</span><span class="token operator">+</span>               scale<span class="token operator">+</span><span class="token string">", minimum-scale="</span><span class="token operator">+</span>               scale<span class="token operator">+</span><span class="token string">", user-scalable=no"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>docEl<span class="token punctuation">.</span>firstElementChild<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             docEl<span class="token punctuation">.</span>firstElementChild<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>metaEl<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> wrap<span class="token operator">=</span> doc<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             wrap<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>metaEl<span class="token punctuation">)</span><span class="token punctuation">;</span>             doc<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>wrap<span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">function</span><span class="token function">refreshRem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> width<span class="token operator">=</span> docEl<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>width<span class="token punctuation">;</span><span class="token comment">// if (width / dpr &gt; 540) {<!-- --></span><span class="token comment">//     width = 540 * dpr;</span><span class="token comment">// }</span><span class="token keyword">var</span> rem<span class="token operator">=</span> width<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>           docEl<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize<span class="token operator">=</span> rem<span class="token operator">+</span><span class="token string">"px"</span><span class="token punctuation">;</span>           flexible<span class="token punctuation">.</span>rem<span class="token operator">=</span> win<span class="token punctuation">.</span>rem<span class="token operator">=</span> rem<span class="token punctuation">;</span><span class="token punctuation">}</span>          win<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"resize"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">clearTimeout</span><span class="token punctuation">(</span>tid<span class="token punctuation">)</span><span class="token punctuation">;</span>             tid<span class="token operator">=</span><span class="token function">setTimeout</span><span class="token punctuation">(</span>refreshRem<span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         win<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"pageshow"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>persisted<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">clearTimeout</span><span class="token punctuation">(</span>tid<span class="token punctuation">)</span><span class="token punctuation">;</span>               tid<span class="token operator">=</span><span class="token function">setTimeout</span><span class="token punctuation">(</span>refreshRem<span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>doc<span class="token punctuation">.</span>readyState<span class="token operator">===</span><span class="token string">"complete"</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>           doc<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize<span class="token operator">=</span><span class="token number">12</span><span class="token operator">*</span> dpr<span class="token operator">+</span><span class="token string">"px"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span>           doc<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"DOMContentLoaded"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>               doc<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize<span class="token operator">=</span><span class="token number">12</span><span class="token operator">*</span> dpr<span class="token operator">+</span><span class="token string">"px"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token function">refreshRem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          flexible<span class="token punctuation">.</span>dpr<span class="token operator">=</span> win<span class="token punctuation">.</span>dpr<span class="token operator">=</span> dpr<span class="token punctuation">;</span>         flexible<span class="token punctuation">.</span>refreshRem<span class="token operator">=</span> refreshRem<span class="token punctuation">;</span>         flexible<span class="token punctuation">.</span><span class="token function-variable function">rem2px</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">d</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> val<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>rem<span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> d<span class="token operator">===</span><span class="token string">"string"</span><span class="token operator">&amp;&amp;</span> d<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">rem$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             val<span class="token operator">+=</span><span class="token string">"px"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span> val<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>         flexible<span class="token punctuation">.</span><span class="token function-variable function">px2rem</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">d</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> val<span class="token operator">=</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token operator">/</span><span class="token keyword">this</span><span class="token punctuation">.</span>rem<span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> d<span class="token operator">===</span><span class="token string">"string"</span><span class="token operator">&amp;&amp;</span> d<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">px$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             val<span class="token operator">+=</span><span class="token string">"rem"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span> val<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> window<span class="token punctuation">[</span><span class="token string">"lib"</span><span class="token punctuation">]</span><span class="token operator">||</span><span class="token punctuation">(</span>window<span class="token punctuation">[</span><span class="token string">"lib"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66053.htm">猫咪疫苗打多少针合适（猫咪疫苗打几针比较好）</a></p>
+                                        <p>下一个：<a href="/news/article-66695.htm">动物防疫管理制度文本（动物防疫相关管理制度）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-29883.htm" title="在哪个平台可以免费领养宠物狗?（在哪个平台可以免费领养宠物狗狗）">在哪个平台可以免费领养宠物狗?（在哪个平台可以免费领养宠物狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-46673.htm" title="动物疫苗价格排行（动物疫苗有哪些大厂家）">动物疫苗价格排行（动物疫苗有哪些大厂家）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-share-netch-node.htm" title="「1月10日」最高速度19.9M/S，2025年Netch每天更新免费节点订阅链接">「1月10日」最高速度19.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-linux-netch-node.htm" title="「12月9日」最高速度20.8M/S，2024年Netch每天更新免费节点订阅链接">「12月9日」最高速度20.8M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-share-netch-node.htm" title="「12月15日」最高速度19.2M/S，2024年Netch每天更新免费节点订阅链接">「12月15日」最高速度19.2M/S，2024年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-53874.htm" title="动物疫苗销售许可证如何办理流程图（动物疫苗经营）">动物疫苗销售许可证如何办理流程图（动物疫苗经营）</a></li>
+                        <li class="py-2"><a href="/news/article-22653.htm" title="宠物到哪领养比较好（宠物哪里领养）">宠物到哪领养比较好（宠物哪里领养）</a></li>
+                        <li class="py-2"><a href="/news/article-43185.htm" title="开一家宠物食品店怎么样 开一家宠物食品店怎么样呢">开一家宠物食品店怎么样 开一家宠物食品店怎么样呢</a></li>
+                        <li class="py-2"><a href="/news/article-67341.htm" title="动物诊所 英语翻译 动物诊所 英语翻译怎么写">动物诊所 英语翻译 动物诊所 英语翻译怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-59470.htm" title="动物疫苗接种时间查询官网（动物疫苗接种时间查询官网电话）">动物疫苗接种时间查询官网（动物疫苗接种时间查询官网电话）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
