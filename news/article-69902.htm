@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-69902.htm" />
+    <meta charset="utf-8">
+    <title>Python数据类型%s，%d，%f的用法</title>
+        <meta name="description" content="1、%s：字符型 %s：正常输出字符 %6s：输出6位字符，不足6位字符的左边用空格符补充，超过6位字符的输出全部字符（%-6d为右边用空格补充） %.2s：截取前2位字符，不足2位的左边用空格符补充" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-69902.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="Python数据类型%s，%d，%f的用法" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/d3867e4ea3222abf11837a47e856794e.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:07:14" />
+    <meta property="og:updated_time" content="2025-03-08T05:07:14" />
+        <meta property="og:description" content="1、%s：字符型 %s：正常输出字符 %6s：输出6位字符，不足6位字符的左边用空格符补充，超过6位字符的输出全部字符（%-6d为右边用空格补充） %.2s：截取前2位字符，不足2位的左边用空格符补充" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python数据类型%s，%d，%f的用法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">Python数据类型%s，%d，%f的用法</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>1、%s：字符型</p> <p>%s：正常输出字符</p> <p>%6s：输出6位字符，不足6位字符的左边用空格符补充，超过6位字符的输出全部字符（%-6d为右边用空格补充）</p> <p>%.2s：截取前2位字符，不足2位的左边用空格符补充</p> <p>%6.2s：先截取2为字符，然后补足6位字符</p> <pre><code class="language-python">test="python" print("按正常输出：%s"%test) print("按长度输出：%6s"%test) print("按截取输出：%.2s"%test) print("截取后补足：%6.2s"%test)  # 输出结果： # 按正常输出：python # 按长度输出：python # 按截取输出：py # 截取后补足：    py</code></pre> <p>2、%d：数字型</p> <p>%d：正常输出数字</p> <p>%6d：输出6位数字，不足6位数字的左边用空格符补充，超过6位数字的输出全部数字</p> <p>%06d：输出6位数字，不足6位数字的左边用“0”补充，超过6位数字的输出全部数字</p> <p>%.2d：截取前2位数字，不足2位的左边用“0”补充</p> <p>%6.2d：先截取2为数字，然后补足6位字符，不足6位用空格符补充</p> <p>%06.2d：先截取2为数字，然后补足6位字符，不足6位用“0”补充</p> <pre><code class="language-python">test=314159265 print("按正常输出：%d"%test) print("按长度输出：%11d"%test) print("不足补0输出：%011d"%test) print("按截取输出：%.4d"%test) print("截取后补足：%11.4d"%test) print("截取后补0：%011.4d"%test)  # 输出结果： # 按正常输出：314159265 # 按长度输出：  314159265 # 不足补0输出：00314159265 # 按截取输出：314159265 # 截取后补足：  314159265 # 截取后补0：00314159265</code></pre> <p>3、%f：浮点型</p> <p>%f：按正常输出，<span style="color:#f33b45;">默认输出小数点后6位小数</span></p> <p>%6f：输出6位数字，<span style="color:#f33b45;">默认输出小数点后6位小数，</span>不足6位数字的左边用空格符补充，超过6位数字的输出全部数字</p> <p>%06f：输出6位数字，<span style="color:#f33b45;">默认输出小数点后6位小数，</span>不足6位数字的左边用“0”补充，超过6位数字的输出全部数字</p> <p>%.2f：输出小数点后2位小数</p> <p>%6.2f：输出小数点后2位小数，然后补足6位字符，不足6位用空格符补充</p> <p>%06.2f：输出小数点后2位小数，然后补足6位字符，不足6位用“0”补充</p> <pre><code class="language-python">test=3.14159265 print("按正常输出：%f"%test) print("按长度输出：%11f"%test) print("不足补0输出：%011f"%test) print("按截取输出：%.4f"%test) print("截取后补足：%11.4f"%test) print("截取后补0：%011.4f"%test)  # 输出结果： # 按正常输出：3.141593 # 按长度输出：   3.141593 # 不足补0输出：0003.141593 # 按截取输出：3.1416 # 截取后补足：     3.1416 # 截取后补0：000003.1416</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69901.htm">SpringBoot配置跨域Cors</a></p>
+                                        <p>下一个：<a href="/news/article-70555.htm">【LINT】cpplint修改版：自定义编码风格检查工具lint_在线工具</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-51729.htm" title="MKL库矩阵乘法(cblas_dgemm)">MKL库矩阵乘法(cblas_dgemm)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-clash.htm" title="「2月14日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「2月14日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-52787.htm" title="狗粮品种价格图片（狗粮品种价格图片表）">狗粮品种价格图片（狗粮品种价格图片表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-netch-node.htm" title="「2月9日」最高速度18.8M/S，2025年Netch每天更新免费节点订阅链接">「2月9日」最高速度18.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-64818.htm" title="宠物粮行业品牌分析报告总结（宠物粮市场份额）">宠物粮行业品牌分析报告总结（宠物粮市场份额）</a></li>
+                        <li class="py-2"><a href="/news/article-55524.htm" title="一件代发进货网站（一件代发进货渠道）">一件代发进货网站（一件代发进货渠道）</a></li>
+                        <li class="py-2"><a href="/news/article-46173.htm" title="开动物医院的条件有哪些方面（开办一间动物医院需要什么资质）">开动物医院的条件有哪些方面（开办一间动物医院需要什么资质）</a></li>
+                        <li class="py-2"><a href="/news/article-66694.htm" title="react项目配置postcss-px2rem-exclude">react项目配置postcss-px2rem-exclude</a></li>
+                        <li class="py-2"><a href="/news/article-41198.htm" title="node_modules/lodash.template/index.js:1558 throw result； ^  SyntaxError: Unexpected token = 报错解决">node_modules/lodash.template/index.js:1558 throw result； ^  SyntaxError: Unexpected token = 报错解决</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="「2月18日」最高速度20.8M/S，2025年Netch每天更新免费节点订阅链接">「2月18日」最高速度20.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

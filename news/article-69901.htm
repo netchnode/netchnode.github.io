@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-69901.htm" />
+    <meta charset="utf-8">
+    <title>SpringBoot配置跨域Cors</title>
+        <meta name="description" content="01、同源策略 同源策略[same origin policy]是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。 同源策略是浏览器安全的基石。  什么是源 源[or" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-69901.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="SpringBoot配置跨域Cors" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/7674efea13a806e235730cb63cd247d5.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:07:14" />
+    <meta property="og:updated_time" content="2025-03-08T05:07:14" />
+        <meta property="og:description" content="01、同源策略 同源策略[same origin policy]是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。 同源策略是浏览器安全的基石。  什么是源 源[or" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot配置跨域Cors">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">SpringBoot配置跨域Cors</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="01_4" rel="nofollow"></a>01、同源策略</h2> <p><strong>同源策略</strong>[same origin policy]是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。 同源策略是浏览器安全的基石。</p> <h3> <a id="_8" rel="nofollow"></a>什么是源</h3> <p><strong>源</strong>[origin]就是协议、域名和端口号。例如：http://www.baidu.com:80这个URL。</p> <h3> <a id="_12" rel="nofollow"></a>什么是同源</h3> <p>若地址里面的协议、域名和端口号均相同则属于同源。</p> <h3> <a id="_16" rel="nofollow"></a>是否是同源的判断</h3> <p>例如判断下面的<code>URL</code>是否与 http://www.a.com/test/index.html 同源</p> <ul> <li>http://www.a.com/dir/page.html 同源</li> <li>http://www.child.a.com/test/index.html 不同源，域名不相同</li> <li>https://www.a.com/test/index.html 不同源，协议不相同</li> <li>http://www.a.com:8080/test/index.html 不同源，端口号不相同</li> </ul> <h3> <a id="_25" rel="nofollow"></a>哪些操作不受同源策略限制</h3> <ol> <li>页面中的链接，重定向以及表单提交是不会受到同源策略限制的；</li> <li>跨域资源的引入是可以的。但是<code>JS</code>不能读写加载的内容。如嵌入到页面中的<code>&lt;script src="..."&gt;&lt;/script&gt;</code>，<code>&lt;img&gt;</code>，<code>&lt;link&gt;</code>，<code>&lt;iframe&gt;</code>等。</li> </ol> <h2> <a id="02_30" rel="nofollow"></a>02、跨域</h2> <p>受前面所讲的浏览器同源策略的影响，不是同源的脚本不能操作其他源下面的对象。想要操作另一个源下的对象就需要跨域。 在同源策略的限制下，<em>非同源</em>的网站之间不能发送 <code>AJAX</code> 请求。</p> <h2> <a id="03_34" rel="nofollow"></a>03、如何解决跨域</h2> <ul> <li> <p>降域</p> <p>可以通过设置 <code>document.damain='a.com'</code>，浏览器就会认为它们都是同一个源。想要实现以上任意两个页面之间的通信，两个页面必须都设置<code>documen.damain='a.com'</code>。</p> </li> <li> <p><code>JSONP</code>跨域</p> </li> <li> <p><code>CORS</code> 跨域</p> </li> </ul> <p>为了解决浏览器同源问题，<code>W3C</code> 提出了跨源资源共享，即 <code>CORS</code>(<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.w3.org/TR/cors/"  rel="nofollow">Cross-Origin Resource Sharing</a>)。</p> <h2> <a id="04CORS__48" rel="nofollow"></a>04、CORS 简介</h2> <p><code>CORS</code> 做到了如下两点：</p> <ul> <li>不破坏即有规则</li> <li>服务器实现了 <code>CORS</code> 接口，就可以跨源通信</li> </ul> <p>基于这两点，<code>CORS</code> 将请求分为两类：简单请求和非简单请求。</p> <h4> <a id="1_57" rel="nofollow"></a>1、简单请求</h4> <p>在<code>CORS</code>出现前，发送<code>HTTP</code>请求时在头信息中不能包含任何自定义字段，且 <code>HTTP</code> 头信息不超过以下几个字段：</p> <ul> <li><code>Accept</code></li> <li><code>Accept-Language</code></li> <li><code>Content-Language</code></li> <li><code>Last-Event-ID</code></li> <li> <code>Content-Type</code> 只限于 [<code>application/x-www-form-urlencoded</code> 、<code>multipart/form-data</code>、<code>text/plain</code> ] 类型</li> </ul> <p>一个简单的请求例子：</p> <p>一个简单的请求例子：</p> <pre><code class="prism language-xml">GET /test HTTP/1.1 Accept: */* Accept-Encoding: gzip, deflate, sdch, br Origin: http://www.examples.com Host: www.examples.com </code></pre> <p>对于简单请求，<code>CORS</code>的策略是请求时在请求头中增加一个<code>Origin</code>字段，服务器收到请求后，根据该字段判断是否允许该请求访问。</p> <ol> <li>如果允许，则在 HTTP 头信息中添加 <code>Access-Control-Allow-Origin</code> 字段，并返回正确的结果 ；</li> <li>如果不 允许，则不在 HTTP 头信息中添加 <code>Access-Control-Allow-Origin</code> 字段 。</li> </ol> <p>除了上面提到的 <code>Access-Control-Allow-Origin</code> ，还有几个字段用于描述 <code>CORS</code> 返回结果 ：</p> <ol> <li> <code>Access-Control-Allow-Credentials</code>： 可选，用户是否可以发送、处理 <code>cookie</code>；</li> <li> <code>Access-Control-Expose-Headers</code>：可选，可以让用户拿到的字段。有几个字段无论设置与否都可以拿到的，包括：<code>Cache-Control</code>、<code>Content-Language</code>、<code>Content-Type</code>、<code>Expires</code>、<code>Last-Modified</code>、<code>Pragma</code> 。</li> </ol> <h4> <a id="2_89" rel="nofollow"></a>2、非简单请求</h4> <p>对于非简单请求的跨源请求，<strong>浏览器会在真实请求发出前</strong>，增加一次<code>OPTION</code>请求，称为预检请求(<code>preflight request</code>)。预检请求将真实请求的信息，包括请求方法、自定义头字段、源信息添加到 HTTP 头信息字段中，询问服务器是否允许这样的操作。</p> <p>例如一个<code>DELETE</code>请求：</p> <pre><code class="prism language-xml">OPTIONS /test HTTP/1.1 Origin: http://www.examples.com Access-Control-Request-Method: DELETE Access-Control-Request-Headers: X-Custom-Header Host: www.examples.com </code></pre> <p>与 <code>CORS</code> 相关的字段有：</p> <ol> <li>请求使用的 <code>HTTP</code> 方法 <code>Access-Control-Request-Method</code> ；</li> <li>请求中包含的自定义头字段 <code>Access-Control-Request-Headers</code> 。</li> </ol> <p>服务器收到请求时，需要分别对 <code>Origin</code>、<code>Access-Control-Request-Method</code>、<code>Access-Control-Request-Headers</code> 进行验证，验证通过后，会在返回 <code>HTTP</code>头信息中添加 ：</p> <pre><code class="prism language-XML">Access-Control-Allow-Origin: http://www.examples.com Access-Control-Allow-Methods: GET, POST, PUT, DELETE Access-Control-Allow-Headers: X-Custom-Header Access-Control-Allow-Credentials: true Access-Control-Max-Age: 1728000 </code></pre> <p>他们的含义分别是：</p> <ol> <li>Access-Control-Allow-Methods: 真实请求允许的方法</li> <li>Access-Control-Allow-Headers: 服务器允许使用的字段</li> <li>Access-Control-Allow-Credentials: 是否允许用户发送、处理 cookie</li> <li>Access-Control-Max-Age: 预检请求的有效期，单位为秒。有效期内，不会重复发送预检请求</li> </ol> <p>当预检请求通过后，浏览器会发送真实请求到服务器。这就实现了跨源请求。</p> <h2> <a id="05Spring_Boot__CORS_127" rel="nofollow"></a>05、Spring Boot 配置 CORS</h2> <h3> <a id="1CrossOrigin__129" rel="nofollow"></a>1、使用<code>@CrossOrigin</code> 注解实现</h3> <p><code>#</code>如果想要对某一接口配置 <code>CORS</code>，可以在方法上添加 <code>@CrossOrigin</code> 注解 ：</p> <pre><code class="prism language-JAVA">@CrossOrigin(origins = {"http://localhost:9000", "null"}) @RequestMapping(value = "/test", method = RequestMethod.GET) public String greetings() {     return "{\"project\":\"just a test\"}"; } </code></pre> <p><code>#</code>如果想对一系列接口添加 CORS 配置，可以在类上添加注解，对该类声明所有接口都有效：</p> <pre><code class="prism language-JAVA">@CrossOrigin(origins = {"http://localhost:9000", "null"}) @RestController @SpringBootApplication public class SpringBootCorsTestApplication {      } </code></pre> <p><code>#</code>如果想添加全局配置，则需要添加一个配置类 ：</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Configuration</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebMvcConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurerAdapter</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@Override</span>     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addCorsMappings</span><span class="token punctuation">(</span><span class="token class-name">CorsRegistry</span> registry<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         registry<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span><span class="token string">"/**"</span><span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">allowedOrigins</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">allowedMethods</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token string">"OPTIONS"</span><span class="token punctuation">,</span> <span class="token string">"DELETE"</span><span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">maxAge</span><span class="token punctuation">(</span><span class="token number">3600</span><span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">allowCredentials</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>另外，还可以通过添加 Filter 的方式，配置 CORS 规则，并手动指定对哪些接口有效。</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Bean</span> <span class="token keyword">public</span> <span class="token class-name">FilterRegistrationBean</span> <span class="token function">corsFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token class-name">UrlBasedCorsConfigurationSource</span> source <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UrlBasedCorsConfigurationSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token class-name">CorsConfiguration</span> config <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CorsConfiguration</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     config<span class="token punctuation">.</span><span class="token function">setAllowCredentials</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	config<span class="token punctuation">.</span><span class="token function">addAllowedOrigin</span><span class="token punctuation">(</span><span class="token string">"http://localhost:9000"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     config<span class="token punctuation">.</span><span class="token function">addAllowedOrigin</span><span class="token punctuation">(</span><span class="token string">"null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     config<span class="token punctuation">.</span><span class="token function">addAllowedHeader</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     config<span class="token punctuation">.</span><span class="token function">addAllowedMethod</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     source<span class="token punctuation">.</span><span class="token function">registerCorsConfiguration</span><span class="token punctuation">(</span><span class="token string">"/**"</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// CORS 配置对所有接口都有效</span>     <span class="token class-name">FilterRegistrationBean</span> bean <span class="token operator">=</span> <span class="token function">newFilterRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CorsFilter</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     bean<span class="token punctuation">.</span><span class="token function">setOrder</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">return</span> bean<span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69250.htm">动物疫苗的使用原则 动物疫苗的使用原则有哪些</a></p>
+                                        <p>下一个：<a href="/news/article-69902.htm">Python数据类型%s，%d，%f的用法</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-43681.htm" title="kafka生产者发送消息可靠性">kafka生产者发送消息可靠性</a></li>
+                        <li class="py-2"><a href="/news/article-45185.htm" title="兽用疫苗注射到人体如何处理（兽用疫苗对人体有害吗）">兽用疫苗注射到人体如何处理（兽用疫苗对人体有害吗）</a></li>
+                        <li class="py-2"><a href="/news/article-52260.htm" title="上海地区宠物领养中心 上海地区宠物领养中心地址">上海地区宠物领养中心 上海地区宠物领养中心地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-node-share-links.htm" title="「1月14日」最高速度18.5M/S，2025年Netch每天更新免费节点订阅链接">「1月14日」最高速度18.5M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="「2月18日」最高速度20.8M/S，2025年Netch每天更新免费节点订阅链接">「2月18日」最高速度20.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-51176.htm" title="动物医院参观有感怎么写 动物医院参观有感怎么写作文">动物医院参观有感怎么写 动物医院参观有感怎么写作文</a></li>
+                        <li class="py-2"><a href="/news/article-64199.htm" title="正规兽药厂家名单 正规兽药厂家名单公布">正规兽药厂家名单 正规兽药厂家名单公布</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-26-node-share-links.htm" title="「2月26日」最高速度19.2M/S，2025年Netch每天更新免费节点订阅链接">「2月26日」最高速度19.2M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-51728.htm" title="mysql主从复制+读写分离+负载均衡">mysql主从复制+读写分离+负载均衡</a></li>
+                        <li class="py-2"><a href="/news/article-37710.htm" title="猫疫苗三针隔多久打狂犬疫苗（猫咪三针疫苗后多久打狂犬）">猫疫苗三针隔多久打狂犬疫苗（猫咪三针疫苗后多久打狂犬）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
