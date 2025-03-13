@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-73205.htm" />
+    <meta charset="utf-8">
+    <title>什么是Java 9中的Project Jigsaw</title>
+        <meta name="description" content="Jigsaw项目的主要目标是引入模块化概念，以Java 9创建模块，然后将其应用于JDK。 以下是模块化（拼图）的一些好处   强大的封装能力：这些模块只能访问那些可以使用的部件。除非将包显式导出到&" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-73205.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="什么是Java 9中的Project Jigsaw" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/79a25d0d9977f088f5103c87cb07fb31.webp" />
+        <meta property="og:release_date" content="2025-03-13T09:23:05" />
+    <meta property="og:updated_time" content="2025-03-13T09:23:05" />
+        <meta property="og:description" content="Jigsaw项目的主要目标是引入模块化概念，以Java 9创建模块，然后将其应用于JDK。 以下是模块化（拼图）的一些好处   强大的封装能力：这些模块只能访问那些可以使用的部件。除非将包显式导出到&" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="什么是Java 9中的Project Jigsaw">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">什么是Java 9中的Project Jigsaw</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p><strong>Jigsaw</strong><strong>项目</strong>的主要目标是引入<strong>模块化</strong>概念，以Java 9创建模块，然后将其应用于<strong>JDK</strong>。</p> <p>以下是<strong>模块化</strong>（<strong>拼图</strong>）的一些好处</p> <ul class="list-paddingleft-2"> <li> <p><strong>强大的封装能力：</strong>这些模块只能访问那些可以使用的部件。除非将包显式导出到<strong>&nbsp;module-info.java</strong>文件中，否则包中的公共类不能是公共的。</p> </li> <li> <p><strong>明确的依赖关系：</strong>一个模块必须声明有关通过必需子句使用的其他模块的信息。组合模块以创建较短的运行时间，可以将其轻松扩展到相对较小的计算设备。</p> </li> <li> <p><strong>可靠：</strong>消除<strong>运行时错误后</strong>，该应用程序将变得更加可靠。例如，我们必须注意到，由于缺少导致<strong>ClassNotFoundException的</strong>类，我们的应用程序在运行时会失败。</p> </li> </ul> <p></p> <p>以下是作为<strong>Jigsaw</strong>项目一部分的各种<strong>JEP</strong>（JDK增强建议）<strong></strong></p> <p><strong>JEP 200</strong> –<strong>模块化JDK：</strong>它利用Java平台模块系统（<strong>JPMS</strong>）将JDK模块化为一组在构建时，编译时或运行时结合在一起的模块。</p> <p><strong>JEP 201</strong> –<strong>模块化源代码</strong>：它将JDK的源代码模块化为模块，并升级内置工具以编译模块。</p> <p><strong>JEP 220</strong> –<strong>模块化运行时映像</strong>：它有助于重组JRE和JDK运行时映像，以容纳用于提高<strong>安全性</strong>，<strong>性能</strong>和<strong>可维护性的</strong>模块&nbsp;。</p> <p><strong>JEP 260 –封装了大多数内部API：</strong>它允许直接访问或通过反射访问大多数内部API。访问将要更改的内部API的风险很大。为防止使用此功能，将其压缩到<strong>模块中，</strong>并且只有那些内部API可供使用。</p> <p><strong>JEP 261 –模块系统：</strong>它负责通过更改JVM，Java编程语言和其他标准API来实现模块系统Java规范。</p> <p><strong>JEP 282-Jlink，Java链接器：</strong>它允许将模块及其依赖性打包到较小的运行时中。</p> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-72548.htm">宠物粮生产流程图片 宠物粮生产流程图片大全</a></p>
+                                        <p>下一个：<a href="/news/article-73206.htm">spring的redirect和foward</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-netch.htm" title="「1月12日」最高速度21.5M/S，2025年Netch每天更新免费节点订阅链接">「1月12日」最高速度21.5M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-57771.htm" title="idea如何代码回退">idea如何代码回退</a></li>
+                        <li class="py-2"><a href="/news/article-70555.htm" title="【LINT】cpplint修改版：自定义编码风格检查工具lint_在线工具">【LINT】cpplint修改版：自定义编码风格检查工具lint_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-35627.htm" title="打动物疫苗有什么过敏反应症状图片（动物疫苗打到人身上会怎么样）">打动物疫苗有什么过敏反应症状图片（动物疫苗打到人身上会怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-7-free-high-speed-nodes.htm" title="「2月7日」最高速度21.9M/S，2025年Netch每天更新免费节点订阅链接">「2月7日」最高速度21.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-free-netch-node.htm" title="「3月9日」最高速度22.5M/S，2025年Netch每天更新免费节点订阅链接">「3月9日」最高速度22.5M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-69902.htm" title="Python数据类型%s，%d，%f的用法">Python数据类型%s，%d，%f的用法</a></li>
+                        <li class="py-2"><a href="/news/article-70556.htm" title="宠物粮食利润大吗知乎（宠物粮食销售好做吗）">宠物粮食利润大吗知乎（宠物粮食销售好做吗）</a></li>
+                        <li class="py-2"><a href="/news/article-42690.htm" title="宠物领养跟买有什么区别（领养的狗和宠物店的区别在哪里）">宠物领养跟买有什么区别（领养的狗和宠物店的区别在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-69901.htm" title="SpringBoot配置跨域Cors">SpringBoot配置跨域Cors</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

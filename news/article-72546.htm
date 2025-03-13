@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-72546.htm" />
+    <meta charset="utf-8">
+    <title>Python格式化输出的三种方法（format,f前缀，%s）</title>
+        <meta name="description" content="格式化输出Python中常用的操作,3.6以后有三种方法:  f-string方法(强烈推荐) str.format()方法 %s方法    简洁万能的f-string方法 3.6以后的版本强烈推荐这" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-72546.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="Python格式化输出的三种方法（format,f前缀，%s）" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/79a25d0d9977f088f5103c87cb07fb31.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:09:42" />
+    <meta property="og:updated_time" content="2025-03-12T06:09:42" />
+        <meta property="og:description" content="格式化输出Python中常用的操作,3.6以后有三种方法:  f-string方法(强烈推荐) str.format()方法 %s方法    简洁万能的f-string方法 3.6以后的版本强烈推荐这" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python格式化输出的三种方法（format,f前缀，%s）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">Python格式化输出的三种方法（format,f前缀，%s）</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-github-gist"> </h1> <blockquote> <p>格式化输出Python中常用的操作,3.6以后有三种方法:</p> <ol> <li>f-string方法(<strong>强烈推荐</strong>)</li> <li>str.format()方法</li> <li>%s方法</li> </ol> </blockquote> <h2> <a id="fstring_7" rel="nofollow"></a>简洁万能的f-string方法</h2> <p>3.6以后的版本强烈推荐这种方法</p> <ul> <li>代码清晰易读</li> <li>{}中支持代码</li> <li>支持格式控制</li> <li>list和tuple型可以随意调整输出顺序</li> </ul> <pre><code class="prism language-python">name_str<span class="token operator">=</span><span class="token string">"f-string"</span> name_lst<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"f-string"</span><span class="token punctuation">,</span><span class="token string">"f-string2"</span><span class="token punctuation">]</span> name_dic<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">"id"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"f-string2"</span><span class="token punctuation">,</span><span class="token string">"height"</span><span class="token punctuation">:</span><span class="token number">1.75</span><span class="token punctuation">}</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'Hello,{name_str}'</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'Hello,{name_lst}'</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'Hello,{name_dic}'</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'支持代码:{name_lst[1]}'</span><span class="token punctuation">)</span> <span class="token comment"># 支持代码</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'整数型无格式控制:{name_dic["id"]}'</span><span class="token punctuation">)</span><span class="token comment"># 整数型无格式控制</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'整数型有格式控制:{name_dic["id"]:5}'</span><span class="token punctuation">)</span> <span class="token comment"># 整数型有格式控制(宽度5)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'字符串型无格式控制:{name_str}'</span><span class="token punctuation">)</span><span class="token comment"># 字符串型无格式控制</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'字符串型有格式控制:{name_str:&gt;10}'</span><span class="token punctuation">)</span> <span class="token comment"># 字符串型有格式控制(右对齐,长度10)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'浮点型无格式控制:{name_dic["height"]}'</span><span class="token punctuation">)</span><span class="token comment"># 浮点型无格式控制</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'浮点型有格式控制:{name_dic["height"]:.3f}'</span><span class="token punctuation">)</span> <span class="token comment"># 浮点型有格式(精度为3位)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'list可以调整输出顺序{name_lst[1]}  {name_lst[0]}'</span><span class="token punctuation">)</span> </code></pre> <pre><code>Hello,f-string Hello,['f-string', 'f-string2'] Hello,{'id': 1, 'name': 'f-string2', 'height': 1.75} 支持代码:f-string2 整数型无格式控制:1 整数型有格式控制:    1 字符串型无格式控制:f-string 字符串型有格式控制:  f-string 浮点型无格式控制:1.75 浮点型有格式控制:1.750 list可以调整输出顺序f-string2  f-string </code></pre> <h2> <a id="strformat_46" rel="nofollow"></a>str.format()方法</h2> <ul> <li>支持格式控制</li> <li>list和tuple型无法调整输出顺序</li> <li>可读性稍差</li> </ul> <pre><code class="prism language-python">name_str<span class="token operator">=</span><span class="token string">"f-string"</span> name_lst<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"f-string"</span><span class="token punctuation">,</span><span class="token string">"f-string2"</span><span class="token punctuation">]</span> name_dic<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">"id"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"f-string2"</span><span class="token punctuation">,</span><span class="token string">"height"</span><span class="token punctuation">:</span><span class="token number">1.75</span><span class="token punctuation">}</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>name_str<span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'列表型和tuple型无法调整输出顺序{} {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token operator">*</span>name_lst<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello {id:5}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token operator">**</span>name_dic<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token comment">#支持格式控制(宽度5),其他的不再列举</span> </code></pre> <pre><code>Hello f-string 列表型和tuple型无法调整输出顺序f-string f-string2 Hello     1 </code></pre> <h2> <a id="s_67" rel="nofollow"></a>%s型</h2> <ul> <li>支持格式控制</li> <li>无法调整list和tuple型输出顺序</li> <li>可读性差</li> </ul> <pre><code class="prism language-python">name_str<span class="token operator">=</span><span class="token string">"f-string"</span> name_lst<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"f-string"</span><span class="token punctuation">,</span><span class="token string">"f-string2"</span><span class="token punctuation">]</span> name_dic<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">"id"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token string">"f-string2"</span><span class="token punctuation">,</span><span class="token string">"height"</span><span class="token punctuation">:</span><span class="token number">1.75</span><span class="token punctuation">}</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'可格式控制:%10s'</span><span class="token operator">%</span> name_str<span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'列表型和tuple型无法调整输出顺序%s %s'</span> <span class="token operator">%</span><span class="token punctuation">(</span><span class="token builtin">tuple</span><span class="token punctuation">(</span>name_lst<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"dict型输出复杂%(name)s"</span> <span class="token operator">%</span><span class="token punctuation">(</span>name_dic<span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <pre><code>可格式控制:  f-string 列表型和tuple型无法调整输出顺序f-string f-string2 dict型输出复杂f-string2 </code></pre> <p><strong>综上所述,3.6以上首推f-string格式,Python3低于3.6推荐str.format,Python2只能选择%s</strong></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71882.htm">怀孕让猫抓破了会影响孩子吗猫打过疫苗（怀孕让猫抓破了会影响孩子吗猫打过疫苗怎么办）</a></p>
+                                        <p>下一个：<a href="/news/article-72548.htm">宠物粮生产流程图片 宠物粮生产流程图片大全</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-66694.htm" title="react项目配置postcss-px2rem-exclude">react项目配置postcss-px2rem-exclude</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-netch.htm" title="「3月11日」最高速度22.9M/S，2025年Netch每天更新免费节点订阅链接">「3月11日」最高速度22.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-node-share-links.htm" title="「2月2日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接">「2月2日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-linux-netch-node.htm" title="「2月13日」最高速度18.4M/S，2025年Netch每天更新免费节点订阅链接">「2月13日」最高速度18.4M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-50674.htm" title="helm部署单节点redis">helm部署单节点redis</a></li>
+                        <li class="py-2"><a href="/news/article-56639.htm" title="成都免费宠物救援中心（成都市宠物救助站是24小时的吗）">成都免费宠物救援中心（成都市宠物救助站是24小时的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-43682.htm" title="宠物食品厂招聘（宠物食品厂招聘信息）">宠物食品厂招聘（宠物食品厂招聘信息）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-netch-node.htm" title="「2月1日」最高速度23M/S，2025年Netch每天更新免费节点订阅链接">「2月1日」最高速度23M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-28-node-share-links.htm" title="「2月28日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「2月28日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-60631.htm" title="养猫易患什么病（养猫可能引起的疾病）">养猫易患什么病（养猫可能引起的疾病）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
