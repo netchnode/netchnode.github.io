@@ -1,0 +1,228 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-87829.htm" />
+    <meta charset="utf-8">
+    <title>springcloudalibaba架构(12):Feign整合Sentinel实现服务容错</title>
+        <meta name="description" content="文章目录  前言 第一节 Feign如何整合Sentinel实现服务容错 第二节 使用FallbackFactory容错获取异常    Feign远程调用，Sentinel限流。 如何将Feign整合" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-87829.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/bcce44828f306587672191a6740e2774.webp" />
+        <meta property="og:release_date" content="2025-04-03T08:34:38" />
+    <meta property="og:updated_time" content="2025-04-03T08:34:38" />
+        <meta property="og:description" content="文章目录  前言 第一节 Feign如何整合Sentinel实现服务容错 第二节 使用FallbackFactory容错获取异常    Feign远程调用，Sentinel限流。 如何将Feign整合" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">springcloudalibaba架构(12):Feign整合Sentinel实现服务容错</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_1" rel="nofollow">前言</a></li> <li><a href="#_FeignSentinel_8" rel="nofollow">第一节 Feign如何整合Sentinel实现服务容错</a></li> <li><a href="#_FallbackFactory_65" rel="nofollow">第二节 使用FallbackFactory容错获取异常</a></li> </ul> </div> </h1> <p>Feign远程调用，Sentinel限流。<br /> 如何将Feign整合Sentinel实现服务容错？<br /> 如何获取Feign远程调用时的异常进行问题排查？</p> <p>本章代码已分享至Gitee:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/lengcz/springcloudalibaba01.git"  rel="nofollow">https://gitee.com/lengcz/springcloudalibaba01.git</a></p> </h1> <ol> <li>引入依赖</li> </ol> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.alibaba.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-alibaba-sentinel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <ol start="2"> <li>开启feign对sentinel的支持</li> </ol> <pre><code class="prism language-yml"><span class="token key atrule">feign</span><span class="token punctuation">:</span><span class="token key atrule">sentinel</span><span class="token punctuation">:</span><span class="token key atrule">enabled</span><span class="token punctuation">:</span><span class="token boolean important">true</span><span class="token comment">#开启feign对sentinel的支持</span></code></pre> <ol start="3"> <li>设置容错的类@FeignClient(value=“server-product”,fallback = ProductServiceFallback.class)</li> </ol> <pre><code class="prism language-java"><span class="token comment">/**  * value用于指定调用的nacos下哪个微服务&lt;br&gt;  * fallback用于指定当前feign接口容错类  */</span><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"server-product"</span><span class="token punctuation">,</span>fallback<span class="token operator">=</span><span class="token class-name">ProductServiceFallback</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">ProductService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/product/{pid}"</span><span class="token punctuation">)</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221130/e52466232ed0c632f5a8c40298d3832c.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"><br /> 4. 实现容错方法（当远程服务不可用时，进行服务容错，进入fallback指定的类的同名方法）</p> <pre><code class="prism language-java"><span class="token comment">/**  * 容错类,需要实现Feign所在的接口，并去实现接口中的所有方法,一旦Feign远程调用出现问题了，就会进入当前类的同名方法，执行容错逻辑  */</span><span class="token annotation punctuation">@Service</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ProductServiceFallback</span><span class="token keyword">implements</span><span class="token class-name">ProductService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Product</span> product<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         product<span class="token punctuation">.</span><span class="token function">setPid</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         product<span class="token punctuation">.</span><span class="token function">setPname</span><span class="token punctuation">(</span><span class="token string">"远程调用微服务异常，进入容错"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> product<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>注:容错类的方法的返回值、方法名、参数必须和原来保持一致。</p> <ol start="5"> <li> <p>修改controller，当pid为-1表示下单失败。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/ce1361c7b526cc5b5c42c65f02abe059.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"></p> </li> <li> <p>启动order和product对应的微服务，发起请求测试，正常情况下可以查询到 Product的信息。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/d80926146328625940c1545753f795a3.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"><br /> 当将product微服务停止了，再次请求下单接口。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/262b33a61fc825bd54d1fc160a490aac.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"></p> </li> </ol> </h1> <p>从第一节的内容，我们可以看到，当调用外部微服务发生异常时，我们并不能看到发生了什么异常，这导致我们很难进行问题排查。使用FacllbackFactory接口，就可以获取到Feign远程调用时发生的异常了。如何操作呢？对第一节的demo进行小小的改动。</p> <ol> <li>实现FallbackFactory</li> </ol> <pre><code class="prism language-java"><span class="token comment">/**  * 容错类,需要实现Feign所在的接口，并去实现接口中的所有方法,一旦Feign远程调用出现问题了，就会进入当前类的同名方法，执行容错逻辑  */</span><span class="token annotation punctuation">@Service</span><span class="token annotation punctuation">@Slf4j</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ProductServiceFallbackFactory</span><span class="token keyword">implements</span><span class="token class-name">FallbackFactory</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ProductService</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">ProductService</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Throwable</span> throwable<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"======"</span><span class="token operator">+</span>throwable<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">ProductService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Product</span> product<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 product<span class="token punctuation">.</span><span class="token function">setPid</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 product<span class="token punctuation">.</span><span class="token function">setPname</span><span class="token punctuation">(</span><span class="token string">"FallbackFactory远程调用微服务异常，进入容错"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> product<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <ol start="2"> <li>指定fallbackFactory=ProductServiceFallbackFactory</li> </ol> <pre><code class="prism language-java"><span class="token comment">/**  * value用于指定调用的nacos下哪个微服务&lt;br&gt;  * fallback用于指定当前feign接口容错类  */</span><span class="token comment">//@FeignClient(value="server-product",fallback = ProductServiceFallback.class)</span><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"server-product"</span><span class="token punctuation">,</span>fallbackFactory<span class="token operator">=</span><span class="token class-name">ProductServiceFallbackFactory</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">ProductService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/product/{pid}"</span><span class="token punctuation">)</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <ol start="3"> <li>只启动order微服务进行请求测试，可以发现能看到Feign调用的异常信息。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/cc799e080b3596228705177780503a81.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"></li> </ol> <p>通过实现FallbackFactory&lt;要实现的接口类&gt;，我们可以捕获到发生的异常进行记录和处理，进行问题排查。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-87089.htm">动物疫苗价格查询表最新消息图片（动物疫苗有哪几种）</a></p>
+                                        <p>下一个：<a href="/news/article-87830.htm">广州宠物救助站电话号码查询（广州宠物狗救助站电话）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-node-subscribe-links.htm" title="「3月3日」最高速度21.9M/S，2025年Netch每天更新免费节点订阅链接">「3月3日」最高速度21.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-high-speed-nodes.htm" title="「3月7日」最高速度20M/S，2025年Netch每天更新免费节点订阅链接">「3月7日」最高速度20M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-74554.htm" title="义乌流浪狗基地在哪里（义乌流浪狗收容中心电话）">义乌流浪狗基地在哪里（义乌流浪狗收容中心电话）</a></li>
+                        <li class="py-2"><a href="/news/article-75207.htm" title="太原小狗免费赠送拜托领养 太原小狗免费赠送拜托领养是真的吗">太原小狗免费赠送拜托领养 太原小狗免费赠送拜托领养是真的吗</a></li>
+                        <li class="py-2"><a href="/news/article-73205.htm" title="什么是Java 9中的Project Jigsaw">什么是Java 9中的Project Jigsaw</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-node-share.htm" title="「4月4日」最高速度21.8M/S，2025年Netch每天更新免费节点订阅链接">「4月4日」最高速度21.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-66695.htm" title="动物防疫管理制度文本（动物防疫相关管理制度）">动物防疫管理制度文本（动物防疫相关管理制度）</a></li>
+                        <li class="py-2"><a href="/news/article-80659.htm" title="全国领养宠物多少钱（国内领养宠物平台）">全国领养宠物多少钱（国内领养宠物平台）</a></li>
+                        <li class="py-2"><a href="/news/article-67341.htm" title="动物诊所 英语翻译 动物诊所 英语翻译怎么写">动物诊所 英语翻译 动物诊所 英语翻译怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-69250.htm" title="动物疫苗的使用原则 动物疫苗的使用原则有哪些">动物疫苗的使用原则 动物疫苗的使用原则有哪些</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
