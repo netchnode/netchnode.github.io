@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://netchnode.github.io/news/article-100486.htm" />
+    <meta charset="utf-8">
+    <title>MySQL NOW()和SYSDATE()有什么区别？</title>
+        <meta name="description" content="MySQLNOW()和SYSDATE()函数返回当前时间戳值。但是它们两者的输出都取决于执行时间。这在它们之间造成了很大的差异。 NOW()函数返回一个稳定时间，该时间指示特定语句开始执行的时间。相反" />
+        <link rel="icon" href="/assets/website/img/netchnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NetchNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://netchnode.github.io/news/article-100486.htm" />
+    <meta property="og:site_name" content="NetchNode节点订阅站" />
+    <meta property="og:title" content="MySQL NOW()和SYSDATE()有什么区别？" />
+    <meta property="og:image" content="https://netchnode.github.io/uploads/20240712/839a7e0abcda898d849dd7da0fef8581.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:05:37" />
+    <meta property="og:updated_time" content="2025-04-20T09:05:37" />
+        <meta property="og:description" content="MySQLNOW()和SYSDATE()函数返回当前时间戳值。但是它们两者的输出都取决于执行时间。这在它们之间造成了很大的差异。 NOW()函数返回一个稳定时间，该时间指示特定语句开始执行的时间。相反" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySQL NOW()和SYSDATE()有什么区别？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/LineIcons.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/default.css">
+    <link rel="stylesheet" href="/assets/website/css/netchnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GDWR5X61B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2GDWR5X61B');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area">
+                <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>Netch Node</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                                                        <li class="nav-item">
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li class="nav-item">
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-banner bg_cover" style="background-image: url(/assets/website/img/netchnode/page-banner-1.jpg)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="page-title">MySQL NOW()和SYSDATE()有什么区别？</h1>
+                            <p class="nav">
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about-area pt-110 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<p>MySQL<code>NOW()</code>和<code>SYSDATE()</code>函数返回当前时间戳值。但是它们两者的输出都取决于执行时间。这在它们之间造成了很大的差异。</p> <p>NOW()函数返回一个稳定时间，该时间指示特定语句开始执行的时间。相反，<code>SYSDATE()</code>函数返回执行语句的准确时间。以下示例将显示这些功能之间的区别-</p> <pre>mysql&gt;&nbsp;Select&nbsp;NOW(),&nbsp;SLEEP(5),&nbsp;NOW(); +---------------------+----------+---------------------+ |&nbsp;NOW()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;SLEEP(5)&nbsp;|&nbsp;NOW()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------+----------+---------------------+ |&nbsp;2017-10-31&nbsp;09:57:36&nbsp;|&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2017-10-31&nbsp;09:57:36&nbsp;| +---------------------+----------+---------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(5.11&nbsp;sec)</pre> <p>上面的查询显示该<code>NOW()</code>函数返回它开始执行的时间，因为即使在系统睡眠5秒钟后，它也会返回相同的值。</p> <pre>mysql&gt;&nbsp;Select&nbsp;SYSDATE(),&nbsp;SLEEP(5),&nbsp;SYSDATE();  +---------------------+----------+---------------------+ |&nbsp;SYSDATE()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;SLEEP(5)&nbsp;|&nbsp;SYSDATE()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------+----------+---------------------+ |&nbsp;2017-10-31&nbsp;09:58:13&nbsp;|&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;2017-10-31&nbsp;09:58:18&nbsp;| +---------------------+----------+---------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(5.00&nbsp;sec)</pre> <p>上述查询表明该<code>SYSDATE()</code>函数返回执行时间，因为在系统睡眠5秒钟后，该函数返回的值实际上增加了5秒钟。</p> <div></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99577.htm">一只宠物猫大概多少钱?（一只宠物猫多少元）</a></p>
+                                        <p>下一个：<a href="/news/article-100487.htm">SpringMVC 最详细笔记必备知识点</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-92162.htm" title="MySQL时间戳类型详解">MySQL时间戳类型详解</a></li>
+                        <li class="py-2"><a href="/news/article-66053.htm" title="猫咪疫苗打多少针合适（猫咪疫苗打几针比较好）">猫咪疫苗打多少针合适（猫咪疫苗打几针比较好）</a></li>
+                        <li class="py-2"><a href="/news/article-98140.htm" title="宠物领养协议书范本模板下载大全图片（宠物领养协议文案）">宠物领养协议书范本模板下载大全图片（宠物领养协议文案）</a></li>
+                        <li class="py-2"><a href="/news/article-74550.htm" title="动物诊疗许可证申领准备材料有哪些（动物诊疗许可证申领准备材料有哪些呢）">动物诊疗许可证申领准备材料有哪些（动物诊疗许可证申领准备材料有哪些呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-free-node-subscribe-links.htm" title="「4月5日」最高速度21.3M/S，2025年Netch每天更新免费节点订阅链接">「4月5日」最高速度21.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-80659.htm" title="全国领养宠物多少钱（国内领养宠物平台）">全国领养宠物多少钱（国内领养宠物平台）</a></li>
+                        <li class="py-2"><a href="/news/article-101085.htm" title="宠物猫疫苗都有哪些（宠物猫疫苗是什么疫苗）">宠物猫疫苗都有哪些（宠物猫疫苗是什么疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-clash.htm" title="「3月15日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接">「3月15日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-node-subscribe-links.htm" title="「3月26日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接">「3月26日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-free-clash.htm" title="「3月27日」最高速度20.1M/S，2025年Netch每天更新免费节点订阅链接">「3月27日」最高速度20.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer id="footer" class="footer-area bg_cover" style="background-image: url(/assets/website/img/netchnode/footer-bg.jpg)">
+        <div class="footer-shape">
+            <img src="/assets/website/img/netchnode/shape/footer-shape.png" alt="footer shape">
+        </div>
+        <div class="container">
+            <div class="footer-copyright text-center">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p class="text">
+                    <a href="/">NetchNode节点订阅站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/netchnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/ajax-contact.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/scrollIt.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/netchnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
