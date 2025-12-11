@@ -306,9 +306,34 @@ SSH隧道通过安全的SSH协议建立加密通道，将网络流量转发到�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess AEAD 加密为何适合高封锁环境？</h5></div>
+    <div class="panel-body">
+        AEAD 加密可防止数据篡改和流量特征泄露，降低被检测风险。在高封锁网络中，保证节点可用性和连接稳定性，同时提升数据传输安全性，确保长期安全访问。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的协议插件如何增强连接稳定性？</h5></div>
+    <div class="panel-body">
+        SSR 的协议插件可以增加流量的伪装特性，模拟常见协议或浏览器行为，从而降低被识别和封锁的风险。这对不稳定网络或高封锁环境尤其有帮助。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 支持节点手动导入和修改吗？</h5></div>
+    <div class="panel-body">
+        支持。用户可以手动输入节点信息或通过扫描二维码导入节点，并进行修改或删除。虽然不支持自动订阅更新，但足以满足轻量级用户对节点管理和分流的需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 的 QUIC 协议相比 TCP 有什么优势？</h5></div>
+    <div class="panel-body">
+        QUIC 协议基于 UDP，减少了握手延迟，支持多路复用和拥塞控制优化。Hysteria2 利用 QUIC 提供更低延迟、更高稳定性的网络连接，尤其适合高延迟或丢包环境。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的配置文件是 YAML 格式吗？</h5></div>
     <div class="panel-body">
         是的。Clash 的配置文件采用 YAML 格式，结构清晰易读。用户可以通过编辑 proxies、proxy-groups 和 rules 部分来自定义节点列表、分组策略和分流规则，非常灵活。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 可以替换 Clash 的 YAML 配置吗？</h5></div>
+    <div class="panel-body">
+        可以。Sing-box 原生支持解析 Clash YAML 配置，并自动转换为自身 JSON 结构。节点和规则基本兼容，但部分脚本和自定义插件可能需要手动调整。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Quantumult X 的主要功能是什么？</h5></div>
@@ -321,39 +346,14 @@ SSH隧道通过安全的SSH协议建立加密通道，将网络流量转发到�
         PassWall2 会根据节点延迟和成功率自动调整策略组选择最优节点。测速结果直接影响程序选择出口，从而提高连接速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 节点测速结合策略组的作用？</h5></div>
-    <div class="panel-body">
-        Shadowrocket 定期测速节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页、视频和游戏流量走低延迟节点，提高访问速度和连接稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的 QUIC 协议相比 TCP 有什么优势？</h5></div>
-    <div class="panel-body">
-        QUIC 协议基于 UDP，减少了握手延迟，支持多路复用和拥塞控制优化。Hysteria2 利用 QUIC 提供更低延迟、更高稳定性的网络连接，尤其适合高延迟或丢包环境。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 支持节点手动导入和修改吗？</h5></div>
-    <div class="panel-body">
-        支持。用户可以手动输入节点信息或通过扫描二维码导入节点，并进行修改或删除。虽然不支持自动订阅更新，但足以满足轻量级用户对节点管理和分流的需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何增强连接稳定性？</h5></div>
-    <div class="panel-body">
-        SSR 的协议插件可以增加流量的伪装特性，模拟常见协议或浏览器行为，从而降低被识别和封锁的风险。这对不稳定网络或高封锁环境尤其有帮助。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 可以替换 Clash 的 YAML 配置吗？</h5></div>
-    <div class="panel-body">
-        可以。Sing-box 原生支持解析 Clash YAML 配置，并自动转换为自身 JSON 结构。节点和规则基本兼容，但部分脚本和自定义插件可能需要手动调整。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess AEAD 加密为何适合高封锁环境？</h5></div>
-    <div class="panel-body">
-        AEAD 加密可防止数据篡改和流量特征泄露，降低被检测风险。在高封锁网络中，保证节点可用性和连接稳定性，同时提升数据传输安全性，确保长期安全访问。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>为什么某些网站在通过代理后登录会频繁要求二次验证？</h5></div>
     <div class="panel-body">
-        代理会改变访问 IP 与地理位置，目标站点可能检测到异常登录并触发验证码或二次验证。建议对常用账户使用白名单 IP 或在代理配置中对特定站点设置直连来避免频繁验证。    </div>
+        代理会改变访问 IP 与地理位置，目标站点可能检测到异常登录并触发验证码或二次验证。建议对常用账户使用白名单 IP 或在代理配置中对特定站点设置直连来避免频繁验证。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Shadowrocket 节点测速结合策略组的作用？</h5></div>
+    <div class="panel-body">
+        Shadowrocket 定期测速节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页、视频和游戏流量走低延迟节点，提高访问速度和连接稳定性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -382,16 +382,16 @@ SSH隧道通过安全的SSH协议建立加密通道，将网络流量转发到�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-7-free-netch-node.htm" title="「10月7日」最高速度21.6M/S，2025年Netch每天更新免费节点订阅链接">「10月7日」最高速度21.6M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-19-free-netch.htm" title="「10月19日」最高速度20.4M/S，2025年Netch每天更新免费节点订阅链接">「10月19日」最高速度20.4M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-9-free-clash-subscribe.htm" title="「10月9日」最高速度18.7M/S，2025年Netch每天更新免费节点订阅链接">「10月9日」最高速度18.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-20-free-netch.htm" title="「11月20日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「11月20日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-26-share-netch-node.htm" title="「10月26日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接">「10月26日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-23-share-netch-node.htm" title="「10月23日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「10月23日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-4-free-clash.htm" title="「12月4日」最高速度21.7M/S，2025年Netch每天更新免费节点订阅链接">「12月4日」最高速度21.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-3-free-subscribe-node.htm" title="「10月3日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接">「10月3日」最高速度20.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-3-free-subscribe-node.htm" title="「11月3日」最高速度21.2M/S，2025年Netch每天更新免费节点订阅链接">「11月3日」最高速度21.2M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-11-share-netch-node.htm" title="「10月11日」最高速度19M/S，2025年Netch每天更新免费节点订阅链接">「10月11日」最高速度19M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-node-share.htm" title="「11月14日」最高速度21.4M/S，2025年Netch每天更新免费节点订阅链接">「11月14日」最高速度21.4M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-22-share-netch-node.htm" title="「11月22日」最高速度19.2M/S，2025年Netch每天更新免费节点订阅链接">「11月22日」最高速度19.2M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-23-free-netch.htm" title="「11月23日」最高速度20.5M/S，2025年Netch每天更新免费节点订阅链接">「11月23日」最高速度20.5M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-free-node-subscribe-links.htm" title="「11月21日」最高速度21.1M/S，2025年Netch每天更新免费节点订阅链接">「11月21日」最高速度21.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-clash-subscribe.htm" title="「11月13日」最高速度22.7M/S，2025年Netch每天更新免费节点订阅链接">「11月13日」最高速度22.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-netch-node.htm" title="「11月18日」最高速度20.9M/S，2025年Netch每天更新免费节点订阅链接">「11月18日」最高速度20.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-26-free-node-subscribe-links.htm" title="「11月26日」最高速度19.4M/S，2025年Netch每天更新免费节点订阅链接">「11月26日」最高速度19.4M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe-links.htm" title="「11月17日」最高速度18.9M/S，2025年Netch每天更新免费节点订阅链接">「11月17日」最高速度18.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-clash-subscribe.htm" title="「11月7日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接">「11月7日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-28-free-node-subscribe.htm" title="「11月28日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接">「11月28日」最高速度19.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -406,10 +406,7 @@ SSH隧道通过安全的SSH协议建立加密通道，将网络流量转发到�
                 <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>

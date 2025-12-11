@@ -168,29 +168,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的流量分流如何与防火墙配合使用？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
     <div class="panel-body">
-        通过 V2Ray 的路由规则，可将指定流量通过代理出口，而防火墙限制其他流量直连。结合防火墙规则可以实现对内部网络访问和外部代理流量的精准控制。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议支持 UDP 吗？</h5></div>
-    <div class="panel-body">
-        支持。Trojan 在最新版本中已支持 UDP 转发，能够满足游戏、视频会议等实时性需求较高的应用场景，性能和兼容性都有明显提升。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何自动切换最优节点？</h5></div>
-    <div class="panel-body">
-        PassWall2 会定期测试节点延迟和丢包率，并结合策略组自动切换到最优节点。无需手动干预即可保证网页、视频和游戏流量高速稳定访问，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
-    <div class="panel-body">
-        减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽与流量配额？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户单独设置带宽和流量上限。超出限制时，可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
+        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 如何提升网速？</h5></div>
@@ -198,14 +178,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Hysteria2 利用 QUIC 协议的低延迟特性，并通过自适应拥塞控制算法在高丢包网络下维持高速连接。配置合适的带宽参数与 TLS 证书，可显著提升跨境访问速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
-    <div class="panel-body">
-        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>如何配置 Clash 以支持局域网内设备共享代理？</h5></div>
     <div class="panel-body">
         启用 Clash 的 HTTP/SOCKS5 本地监听并在局域网设备上设置该代理地址为网关；若使用 TUN 模式需配合路由器或透明代理实现全局共享，注意开启访问控制避免未经授权的外部访问。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽与流量配额？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户单独设置带宽和流量上限。超出限制时，可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
+    <div class="panel-body">
+        减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何自动切换最优节点？</h5></div>
+    <div class="panel-body">
+        PassWall2 会定期测试节点延迟和丢包率，并结合策略组自动切换到最优节点。无需手动干预即可保证网页、视频和游戏流量高速稳定访问，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 的订阅更新支持自动导入节点吗？</h5></div>
@@ -213,9 +203,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         支持。Nekoray 可以通过订阅 URL 自动下载节点，并根据用户配置更新本地节点列表。定期更新确保节点始终可用，减少手动维护的麻烦，提高使用便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
+    <div class="panel-heading"><h5>Trojan 协议支持 UDP 吗？</h5></div>
     <div class="panel-body">
-        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。    </div>
+        支持。Trojan 在最新版本中已支持 UDP 转发，能够满足游戏、视频会议等实时性需求较高的应用场景，性能和兼容性都有明显提升。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的流量分流如何与防火墙配合使用？</h5></div>
+    <div class="panel-body">
+        通过 V2Ray 的路由规则，可将指定流量通过代理出口，而防火墙限制其他流量直连。结合防火墙规则可以实现对内部网络访问和外部代理流量的精准控制。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
+    <div class="panel-body">
+        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -244,16 +244,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-31-free-netch-node.htm" title="「10月31日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接">「10月31日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-8-node-share-links.htm" title="「10月8日」最高速度20.9M/S，2025年Netch每天更新免费节点订阅链接">「10月8日」最高速度20.9M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-8-free-clash.htm" title="「11月8日」最高速度21M/S，2025年Netch每天更新免费节点订阅链接">「11月8日」最高速度21M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-1-free-clash-subscribe.htm" title="「11月1日」最高速度18.1M/S，2025年Netch每天更新免费节点订阅链接">「11月1日」最高速度18.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-9-free-clash-subscribe.htm" title="「10月9日」最高速度18.7M/S，2025年Netch每天更新免费节点订阅链接">「10月9日」最高速度18.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-24-node-share-links.htm" title="「10月24日」最高速度18.7M/S，2025年Netch每天更新免费节点订阅链接">「10月24日」最高速度18.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-netch.htm" title="「11月30日」最高速度20.1M/S，2025年Netch每天更新免费节点订阅链接">「11月30日」最高速度20.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-node-share-links.htm" title="「11月5日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接">「11月5日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-11-netch-node.htm" title="「11月11日」最高速度18.1M/S，2025年Netch每天更新免费节点订阅链接">「11月11日」最高速度18.1M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-26-share-netch-node.htm" title="「10月26日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接">「10月26日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-27-free-netch-node.htm" title="「11月27日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接">「11月27日」最高速度22.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-clash-subscribe.htm" title="「11月7日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接">「11月7日」最高速度18.3M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-6-node-share.htm" title="「11月6日」最高速度22.4M/S，2025年Netch每天更新免费节点订阅链接">「11月6日」最高速度22.4M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-20-free-netch.htm" title="「11月20日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接">「11月20日」最高速度19.8M/S，2025年Netch每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-9-free-clash-subscribe.htm" title="「11月9日」最高速度21.6M/S，2025年Netch每天更新免费节点订阅链接">「11月9日」最高速度21.6M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-19-netch-node.htm" title="「11月19日」最高速度20M/S，2025年Netch每天更新免费节点订阅链接">「11月19日」最高速度20M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-12-linux-netch-node.htm" title="「11月12日」最高速度23M/S，2025年Netch每天更新免费节点订阅链接">「11月12日」最高速度23M/S，2025年Netch每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-clash-subscribe.htm" title="「11月13日」最高速度22.7M/S，2025年Netch每天更新免费节点订阅链接">「11月13日」最高速度22.7M/S，2025年Netch每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -265,10 +265,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>
